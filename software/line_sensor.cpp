@@ -13,13 +13,6 @@ void LS_setup() {
     pinMode(far_right_line_sensor_pin_no, INPUT);
 }
 
-typedef struct {
-    bool left;
-    bool far_left;
-    bool right;
-    bool far_right;
-} LS_data_t;
-
 LS_data_t LS_read() {
     LS_data_t data;
 
