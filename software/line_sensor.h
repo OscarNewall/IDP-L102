@@ -1,3 +1,15 @@
+// header guard
+#ifndef line_sensor_h
+#define line_sensor_h
+
+#include <Arduino.h>
+
+// pin definitions
+#define left_line_pin 2
+#define far_left_line_pin 0
+
+#define right_line_pin 0
+#define far_right_line_pin 0
 
 typedef struct {
     bool left;
