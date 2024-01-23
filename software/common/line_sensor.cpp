@@ -1,3 +1,5 @@
+#include "line_sensor.h"
+
 #include <Arduino.h>
 
 static const int left_line_sensor_pin_no = 2;
