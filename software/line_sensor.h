@@ -21,3 +21,5 @@ typedef struct {
 void LS_setup();
 
 LS_data_t LS_read();
+
+#endif
