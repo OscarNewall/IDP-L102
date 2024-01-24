@@ -1,18 +1,18 @@
-#include "motor_h"
+#include "motor.h"
+
+Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+
+Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
+Adafruit_DCMotor* rightmotor = AFMS.getMotor(2);
 
 // Initialising motors and checking they exist
 void MOT_initialise() {
-    Adafruit_MotorShield AFMSleft = Adafruit_MotorShield(/*I2C address leftmotor*/);
-    Adafruit_MotorShield AFMSright = Adafruit_MotorShield(/*I2C address rightmotor*/);
 
-    Adafruit_DCMotor* leftmotor = AFMSleft.getMotor(/*left motor port number*/);
-    Adafruit_DCMotor* rightmotor = AFMSright.getMotor(/*right motor port number*/);
-
-    if (!AFMSleft.begin()) {
+    if (!AFMS.begin()) {
         Serial.println("Could not find left Motor Shield. Check wiring.");
         while (1);
     }
-    if (!AFMSright.begin()) {
+    if (!AFMS.begin()) {
         Serial.println("Could not find right Motor Shield. Check wiring.");
         while (1);
     }
@@ -26,13 +26,13 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
         leftmotor->run(BACKWARD);
     }
     else {
-        leftmotor->run(FORWARD)
+        leftmotor->run(FORWARD);
     }
     if (rightspeed < 0) {
         rightmotor->run(BACKWARD);
     }
     else {
-        rightmotor->run(FORWARD)
+        rightmotor->run(FORWARD);
     }
 	leftmotor->setSpeed(abs(leftspeed));
 	rightmotor->setSpeed(abs(rightspeed));
