@@ -26,13 +26,13 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
         leftmotor->run(BACKWARD);
     }
     else {
-        leftmotor->run(FORWARD)
+        leftmotor->run(FORWARD);
     }
     if (rightspeed < 0) {
         rightmotor->run(BACKWARD);
     }
     else {
-        rightmotor->run(FORWARD)
+        rightmotor->run(FORWARD);
     }
 	leftmotor->setSpeed(abs(leftspeed));
 	rightmotor->setSpeed(abs(rightspeed));
