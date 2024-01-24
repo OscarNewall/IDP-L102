@@ -9,11 +9,11 @@ void setup() {
 }
 void loop() {
   // put your main code here, to run repeatedly:
-  MOT_setspeeds(50,50)
-  delay(2000)
-  MOT_setspeeds(-25,25)
-  delay(1000)
-  MOT_setspeeds(50,50)
-  delay(3000)
+  MOT_setspeeds(50,50);
+  delay(2000);
+  MOT_setspeeds(-25,25);
+  delay(1000);
+  MOT_setspeeds(50,50);
+  delay(3000);
   while (1);
 }
