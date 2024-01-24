@@ -1,4 +1,4 @@
-#include "motor_h"
+#include "motor.h"
 
 // Initialising motors and checking they exist
 void MOT_initialise() {
