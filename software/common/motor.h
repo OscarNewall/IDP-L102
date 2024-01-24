@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <Adafruit_MotorShield.h>
 
-void MOT_initialise()
-void MOT_setspeeds(int, int)
+void MOT_initialise();
+void MOT_setspeeds(int, int);
 
 #endif
