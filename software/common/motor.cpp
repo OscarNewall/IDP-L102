@@ -1,11 +1,12 @@
 #include "motor.h"
 
+Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+
+Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
+Adafruit_DCMotor* rightmotor = AFMS.getMotor(2);
+
 // Initialising motors and checking they exist
 void MOT_initialise() {
-    Adafruit_MotorShield AFMS = Adafruit_MotorShield();
-
-    Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
-    Adafruit_DCMotor* rightmotor = AFMS.getMotor(2);
 
     if (!AFMSleft.begin()) {
         Serial.println("Could not find left Motor Shield. Check wiring.");
