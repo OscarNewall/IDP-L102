@@ -8,11 +8,11 @@ Adafruit_DCMotor* rightmotor = AFMS.getMotor(2);
 // Initialising motors and checking they exist
 void MOT_initialise() {
 
-    if (!AFMSleft.begin()) {
+    if (!AFMS.begin()) {
         Serial.println("Could not find left Motor Shield. Check wiring.");
         while (1);
     }
-    if (!AFMSright.begin()) {
+    if (!AFMS.begin()) {
         Serial.println("Could not find right Motor Shield. Check wiring.");
         while (1);
     }
