@@ -3,12 +3,14 @@
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
 Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
-Adafruit_DCMotor* rightmotor = AFMS.getMotor(2);
+Adafruit_DCMotor* rightmotor = AFMS.getMotor(4);
 
 int last_leftspeed = 0;
 int last_rightspeed = 0;
 
 bool is_moving = false;
+int blue_led = 7;
+pinMode(blue_led, OUTPUT);
 
 // Initialising motors and checking they exist
 void MOT_initialise() {
@@ -51,5 +53,17 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
 	    rightmotor->setSpeed(abs(rightspeed));
         last_leftspeed = leftspeed;
         last_rightspeed = rightspeed;
+    }
+}
+
+// Blue movement LED flashing callback Function
+void LED_flashblue() {
+    if (is_moving == false) {
+        // HIGH is off
+        digitalWrite(blue_led, HIGH);
+    }
+    else {
+        // If moving, toggle led
+        digitalWrite (blue_led, !digitalRead (blue_led));
     }
 }
