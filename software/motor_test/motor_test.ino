@@ -14,10 +14,5 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   bluetimer.update();
-  MOT_setspeeds(-255,-255);
-  delay(2000);
-  MOT_setspeeds(-100,100);
-  delay(1000);
-  MOT_setspeeds(255,255);
-  delay(3000);
+  MOT_setspeeds(200,200);
 }
