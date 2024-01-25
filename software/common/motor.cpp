@@ -8,9 +8,10 @@ Adafruit_DCMotor* rightmotor = AFMS.getMotor(2);
 int last_leftspeed = 0;
 int last_rightspeed = 0;
 
+bool is_moving = false;
+
 // Initialising motors and checking they exist
 void MOT_initialise() {
-
     if (!AFMS.begin()) {
         Serial.println("Could not find left Motor Shield. Check wiring.");
         while (1);
@@ -24,7 +25,15 @@ void MOT_initialise() {
 
 // Function to set motor speeds only if they need to change
 // Use MOT_setspeeds(0,0) to stop
+// is_moving false if speeds are 0,0
+// Otherwise true
 void MOT_setspeeds(int leftspeed, int rightspeed) {
+    if (leftspeed == 0 and rightspeed ==0) {
+        is_moving = false;
+    }
+    else {
+        is_moving = true;
+    }
     if ((last_leftspeed != leftspeed) or (last_rightspeed != rightspeed)) {
         if (leftspeed < 0) {
             leftmotor->run(BACKWARD);
