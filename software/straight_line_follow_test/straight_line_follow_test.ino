@@ -8,4 +8,5 @@ void setup() {
 
 void loop() {
   straight_basic(255, 220);
+  delay(5);
 }
