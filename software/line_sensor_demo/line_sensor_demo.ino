@@ -7,5 +7,15 @@ void setup() {
 
 void loop() {
   LS_data_t line_sensor_data = LS_read();
-  Serial.println(line_sensor_data.left);
+
+  Serial.print("Far left: ");
+  Serial.print(line_sensor_data.far_left);
+  Serial.print(" Left: ");
+  Serial.print(line_sensor_data.left);
+  Serial.print(" Right: ");
+  Serial.print(line_sensor_data.right);
+  Serial.print(" Far right: ");
+  Serial.println(line_sensor_data.far_right);
+
+  delay(500);
 }
