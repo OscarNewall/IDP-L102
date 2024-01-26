@@ -15,3 +15,4 @@ To create a new symlink:
 mklink /d src ..\common
 ```
 - Name src/ is essential for Arduino IDE to compile source files
+- Any questions please ask Jon 'the Goat' Tindal
