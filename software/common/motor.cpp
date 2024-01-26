@@ -10,10 +10,11 @@ int last_rightspeed = 0;
 
 bool is_moving = false;
 int blue_led = 7;
-pinMode(blue_led, OUTPUT);
 
 // Initialising motors and checking they exist
 void MOT_initialise() {
+    pinMode(blue_led, OUTPUT);
+
     if (!AFMS.begin()) {
         Serial.println("Could not find left Motor Shield. Check wiring.");
         while (1);
@@ -23,6 +24,9 @@ void MOT_initialise() {
         while (1);
     }
     Serial.println("Both Motor Shields found.");
+
+    leftmotor->run(RELEASE);
+    rightmotor->run(RELEASE);
 }
 
 // Function to set motor speeds only if they need to change
