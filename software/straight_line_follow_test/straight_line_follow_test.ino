@@ -7,6 +7,6 @@ void setup() {
 }
 
 void loop() {
-  straight_basic(255, 220);
+  straight_basic(255, 150);
   delay(5);
 }
