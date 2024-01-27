@@ -5,49 +5,32 @@
 
 #define SEARCH_SPEED 100
 
-typedef enum {
-    FAR_LEFT_TRIGGERED,
-    FAR_RIGHT_TRIGGERED,
-} JUNC_state_e;
-
-static JUNC_state_e state;
+static bool far_left_triggered;
+static bool far_right_triggered;
 
 JUNC_types_e JUNC_identify() {
-    LS_data_t ls_out = LS_read();
+    far_left_triggered = false;
+    far_right_triggered = false;
 
-    if (ls_out.far_left and ls_out.far_right) {
-        return JUNC_T;
-    }
-    else if (ls_out.far_left) {
-        state = FAR_LEFT_TRIGGERED;
-    }
-    else if (ls_out.far_right) {
-        state = FAR_RIGHT_TRIGGERED;
-    }
-
+    MOT_setspeeds(SEARCH_SPEED, SEARCH_SPEED);
+    
     while (true) {
-        ls_out = LS_read();
+        LS_data_t ls_out = LS_read();
 
-        if (state == FAR_LEFT_TRIGGERED) {
-            if (!ls_out.far_left) {
-                return JUNC_LEFT;
-            }
-            else if (ls_out.far_right) {
-                return JUNC_T;
-            }
 
-            MOT_setspeeds(SEARCH_SPEED, SEARCH_SPEED);
+        far_left_triggered |= ls_out.far_left;
+        far_right_triggered |= ls_out.far_right;
+
+        if (far_left_triggered and far_right_triggered) {
+            return JUNC_T;
         }
 
-        else if (state == FAR_RIGHT_TRIGGERED) {
-            if (!ls_out.far_right) {
-                return JUNC_RIGHT;
-            }
-            else if (ls_out.far_left) {
-                return JUNC_T;
-            }
+        if (far_left_triggered and !ls_out.far_left) {
+            return JUNC_LEFT;
+        }
 
-            MOT_setspeeds(SEARCH_SPEED, SEARCH_SPEED);
+        if (far_right_triggered and !ls_out.far_right) {
+            return JUNC_RIGHT;
         }
     }
 }
