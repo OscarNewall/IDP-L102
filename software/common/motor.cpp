@@ -63,8 +63,7 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
 // Blue movement LED flashing callback Function
 void LED_flashblue() {
     if (is_moving == false) {
-        // HIGH is off
-        digitalWrite(blue_led, HIGH);
+        digitalWrite(blue_led, LOW);
     }
     else {
         // If moving, toggle led
