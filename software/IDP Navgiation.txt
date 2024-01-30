@@ -1,9 +1,13 @@
 ﻿Junction types:
-* Left-right                                        L-R        
+* Left-right                                          L-R        
 * Forward-left                                        F-L        
-* Forward-right                                        F-R        
-* End-block (no sensors on)                        E-B
+* Forward-right                                       F-R        
+* End-block (no sensors on)                           E-B
 * End-outpost (all sensors on)                        E-O
+
+
+
+***** NEED TO CHECK IF 180s ARE POSSIBLE WITH NEW CHASSIS, OR WILL HAVE TO REVERSE ? *****
 
 
 Start to residential 1:
