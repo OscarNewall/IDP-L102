@@ -8,10 +8,13 @@ typedef enum {
 
 state_e state;
 
+Ticker bluetimer(LED_flashblue, 500, 0, MILLIS);
+
 void setup() {
     Serial.begin(9600);
     LS_setup();
     MOT_initialise();
+    bluetimer.start();
     state = STRAIGHT;
 }
 
@@ -29,4 +32,5 @@ void loop() {
             Serial.println("Switching to STRAIGHT");
         }
     }
+    bluetimer.update();
 }
