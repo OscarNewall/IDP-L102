@@ -1,0 +1,77 @@
+﻿Junction types:
+* Left-right                                        L-R        
+* Forward-left                                        F-L        
+* Forward-right                                        F-R        
+* End-block (no sensors on)                        E-B
+* End-outpost (all sensors on)                        E-O
+
+
+Start to residential 1:
+* Blind forwards into line follow
+* Left turn at L-R
+* Right turn at F-R
+* Pick-up at E-B
+
+
+Residential 1 to green outpost:
+* 180 turn
+* Right turn at L-R
+* Left turn at L-R
+* Drop off at E-O
+
+
+Residential 1 to red outpost:
+* 180 turn
+* Left turn at L-R
+* Forward at F-R
+* Right at L-R
+* Drop off at E-O
+
+
+Green outpost to residential 2:
+* 180 turn
+* Forward at F-R
+* Right at F-R
+* Forward at F-L
+* Right at F-R
+* Pick up at E-B
+
+
+Red outpost to residential 2:
+* 180 turn
+* Forward at F-L
+* Left at F-L
+* Left at F-L
+* Pick up at E-B
+
+
+Residential 2 to green outpost:
+* 180 turn
+* Left at L-R
+* Forward at F-R
+* Left at L-R
+* Forward at F-L
+* Drop off at E-O
+
+
+Residential 2 to red outpost:
+* 180 turn
+* Right at L-R
+* Right at L-R
+* Forward at F-R
+* Drop off at E-O
+
+
+Green outpost to finish:
+* 180 turn
+* Right at F-R
+* Forward at F-L
+* Right at F-R
+* Straight on blind at L-R until detects line at back of box
+
+
+Red outpost to finish:
+* 180 turn
+* Left at F-L
+* Left at F-L
+* Straight on blind at L-R until detects line at back of box
