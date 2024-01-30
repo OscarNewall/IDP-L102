@@ -8,6 +8,8 @@ typedef enum {
     JUNC_T,
 } JUNC_types_e;
 
-bool JUNC_left_turn();
+void JUNC_left_turn_enter();
+
+bool JUNC_left_turn_loop();
 
 #endif

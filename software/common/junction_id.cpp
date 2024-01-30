@@ -1,20 +1,33 @@
 #include "junction_id.h"
 
+#include <stdint.h>
+
 #include "line_sensor.h"
 #include "motor.h"
 
-#define TURN_INNER_SPEED -50
-#define TURN_OUTER_SPEED 100
+#define FORWARD_SPEED 200
+#define FORWARD_TIME_MS 1000
+#define TURN_SPEED 100
 
-bool JUNC_left_turn() {
+static uint32_t turn_start_time;
+
+void JUNC_left_turn_enter() {
+    turn_start_time = millis();
+}
+
+bool JUNC_left_turn_loop() {
     LS_data_t ls_out = LS_read();
 
-    if (!ls_out.far_left && ls_out.left && ls_out.right && !ls_out.far_right) {
+    if (millis() - turn_start_time < FORWARD_TIME_MS) {
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+        return true;
+    }
+    else if (!ls_out.far_left && ls_out.left && ls_out.right && !ls_out.far_right) {
         MOT_setspeeds(0, 0);
         return false;
     }
 
-    MOT_setspeeds(TURN_INNER_SPEED, TURN_OUTER_SPEED);
+    MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
 
     return true;
 }
