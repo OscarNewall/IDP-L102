@@ -5,6 +5,6 @@
 #include "motor.h"
 #include "line_sensor.h"
 
-void straight_basic(int, int);
+bool straight_basic(int, int);
 
 #endif

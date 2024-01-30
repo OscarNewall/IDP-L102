@@ -10,4 +10,6 @@ typedef enum {
 
 JUNC_types_e JUNC_identify();
 
+bool JUNC_left_turn();
+
 #endif
