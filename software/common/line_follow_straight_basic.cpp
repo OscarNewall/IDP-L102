@@ -21,3 +21,15 @@ bool straight_basic(int speed_high, int speed_low) {
     }
     return true;
 }
+
+bool blind_forwards() {
+    LS_data_t data = LS_read();
+
+    if (data.far_left == 1 || data.left == 1 || data.right == 1 || data.far_right == 1) {
+        MOT_setspeeds(0, 0);
+        return false;
+    }
+
+    MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+    return true;
+}
