@@ -1,13 +1,14 @@
 #include "navigation.h"
 
 static const NAV_turns_e turns_order[] = {
-    NAV_LEFT,
+    // For start box to nearest residential 
+    NAV_BLIND,
     NAV_STRAIGHT,
     NAV_LEFT,
     NAV_STRAIGHT,
+    NAV_RIGHT,
     NAV_STRAIGHT,
-    NAV_LEFT,
-    NAV_LEFT,
+    // At block
 };
 
 static unsigned int nav_pos_index = 0;
