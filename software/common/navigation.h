@@ -2,11 +2,11 @@
 #define NAVIGATION_H
 
 typedef enum {
-    NAV_LEFT,
-    NAV_RIGHT,
-    NAV_PASSJUNC,
+    NAV_JUNC_LEFT,
+    NAV_JUNC_RIGHT,
+    NAV_JUNC_PASS,
     NAV_BLIND_FORWARDS,
-    NAV_FOLLOW,
+    NAV_LINE_FOLLOW,
 } NAV_turns_e;
 
 NAV_turns_e NAV_next();
