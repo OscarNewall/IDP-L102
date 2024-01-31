@@ -34,13 +34,13 @@ void loop() {
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
     }
-    else if (state == BLIND_FORWARDS) {
+    else if (state == NAV_BLIND_FORWARDS) {
         if (!blind_forwards()) {
             state = NAV_next();
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
     }
-    else if (state == JUNC_PASS) {
+    else if (state == NAV_JUNC_PASS) {
         if (!JUNC_pass_loop()) {
             state = NAV_next();
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
