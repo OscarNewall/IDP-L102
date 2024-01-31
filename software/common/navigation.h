@@ -4,8 +4,9 @@
 typedef enum {
     NAV_LEFT,
     NAV_RIGHT,
-    NAV_STRAIGHT,
-    NAV_BLIND,
+    NAV_PASSJUNC,
+    NAV_BLIND_FORWARDS,
+    NAV_FOLLOW,
 } NAV_turns_e;
 
 NAV_turns_e NAV_next();
