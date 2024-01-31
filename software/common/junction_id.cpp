@@ -11,11 +11,21 @@
 
 static uint32_t turn_start_time;
 
-void JUNC_left_turn_enter() {
+void JUNC_enter() {
     turn_start_time = millis();
 }
 
-bool JUNC_left_turn_loop() {
+bool JUNC_pass_loop() {
+    if (millis() - turn_start_time < FORWARD_TIME_MS) {
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+        return true;
+    }
+
+    MOT_setspeeds(0, 0);
+    return false;
+}
+
+bool JUNC_turn_loop(bool is_left) {
     LS_data_t ls_out = LS_read();
 
     if (millis() - turn_start_time < FORWARD_TIME_MS) {
@@ -27,7 +37,12 @@ bool JUNC_left_turn_loop() {
         return false;
     }
 
-    MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
+    if (is_left) {
+        MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
+    }
+    else {
+        MOT_setspeeds(TURN_SPEED, -TURN_SPEED);
+    }
 
     return true;
 }
