@@ -6,7 +6,7 @@
 #include "motor.h"
 
 #define FORWARD_SPEED 200
-#define FORWARD_TIME_MS 1000
+#define FORWARD_TIME_MS 700
 #define TURN_SPEED 100
 
 static uint32_t turn_start_time;

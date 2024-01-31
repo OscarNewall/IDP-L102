@@ -20,7 +20,7 @@ void setup() {
 
 void loop() {
     if (state == STRAIGHT) {
-        if (!straight_basic(255, 220)) {
+        if (!straight_basic(255, 127)) {
             state = JUNC_TURN_LEFT;
             JUNC_left_turn_enter();
             Serial.println("Switching to JUNC_TURN_LEFT");
