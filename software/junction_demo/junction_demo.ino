@@ -22,12 +22,12 @@ void loop() {
     if (state == STRAIGHT) {
         if (!straight_basic(255, 127)) {
             state = JUNC_TURN_LEFT;
-            JUNC_left_turn_enter();
+            JUNC_enter();
             Serial.println("Switching to JUNC_TURN_LEFT");
         }
     }
     else if (state == JUNC_TURN_LEFT) {
-        if (!JUNC_left_turn_loop()) {
+        if (!JUNC_turn_loop(false)) {
             state = STRAIGHT;
             Serial.println("Switching to STRAIGHT");
         }
