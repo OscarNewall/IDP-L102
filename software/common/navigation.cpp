@@ -3,11 +3,11 @@
 static const NAV_turns_e turns_order[] = {
     // For start box to nearest residential 
     NAV_BLIND_FORWARDS,
-    NAV_FOLLOW,
-    NAV_LEFT,
-    NAV_FOLLOW,
-    NAV_RIGHT,
-    NAV_FOLLOW,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_RIGHT,
+    NAV_LINE_FOLLOW,
     // At block
 };
 
