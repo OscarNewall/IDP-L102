@@ -27,7 +27,7 @@ void loop() {
         }
     }
     else if (state == JUNC_TURN_LEFT) {
-        if (!JUNC_turn_loop(false)) {
+        if (!JUNC_turn_loop(true)) {
             state = STRAIGHT;
             Serial.println("Switching to STRAIGHT");
         }
