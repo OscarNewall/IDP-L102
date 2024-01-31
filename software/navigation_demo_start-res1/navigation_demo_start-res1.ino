@@ -4,6 +4,8 @@
 
 Ticker bluetimer(LED_flashblue, 500, 0, MILLIS);
 
+NAV_turns_e state;
+
 void setup() {
     Serial.begin(9600);
     LS_setup();
@@ -19,17 +21,17 @@ void loop() {
     if (state == NAV_LINE_FOLLOW) {
         if (!straight_basic(255,127)) {
             state = NAV_next();
-            JUNC_ENTER();
+            JUNC_enter();
       }
     }
     else if (state == NAV_JUNC_LEFT) {
-        if (!JUNC_turn_loop(bool is_left = true)) { // True for left
+        if (!JUNC_turn_loop(true)) { // True for left
             state = NAV_next();
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
     }
     else if (state == NAV_JUNC_RIGHT) {
-        if (!JUNC_turn_loop(bool is_left = false)) { // False for right
+        if (!JUNC_turn_loop(false)) { // False for right
             state = NAV_next();
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
