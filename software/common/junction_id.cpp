@@ -4,9 +4,9 @@
 
 #include "line_sensor.h"
 #include "motor.h"
+#include "line_follow_straight_basic.h"
 
-#define FORWARD_SPEED 200
-#define FORWARD_TIME_MS 700
+#define FORWARD_TIME_MS 500
 #define TURN_SPEED 100
 
 static uint32_t turn_start_time;
