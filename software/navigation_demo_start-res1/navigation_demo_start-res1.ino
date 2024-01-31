@@ -23,13 +23,13 @@ void loop() {
       }
     }
     else if (state == NAV_JUNC_LEFT) {
-        if (!JUNC_turn_loop(bool is_left = true) { // True for left
+        if (!JUNC_turn_loop(bool is_left = true)) { // True for left
             state = NAV_next();
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
     }
     else if (state == NAV_JUNC_RIGHT) {
-        if (!JUNC_turn_loop(bool is_left = false) { // False for right
+        if (!JUNC_turn_loop(bool is_left = false)) { // False for right
             state = NAV_next();
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
