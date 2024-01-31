@@ -12,7 +12,13 @@ git config --global core.symlinks true
 To create a new symlink:
 - In sketch directory (folder with .ino file)
 ```bash
-mklink /d src ..\common
+cmd.exe /c mklink /d src ..\common
 ```
 - Name src/ is essential for Arduino IDE to compile source files
+
+To remove a symlink:
+```bash
+cmd.exe /c rmdir src
+```
+
 - Any questions please ask Jon 'the Goat' Tindal
