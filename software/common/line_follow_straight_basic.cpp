@@ -1,6 +1,6 @@
 #include "line_follow_straight_basic.h"
 
-bool straight_basic(int speed_high, int speed_low) {
+bool MOVE_line_follow_loop() {
     LS_data_t data = LS_read();
     if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0))
     {
@@ -9,20 +9,20 @@ bool straight_basic(int speed_high, int speed_low) {
     }
     else if (data.left == 1 && data.right == 1)
     {
-        MOT_setspeeds(speed_high, speed_high);
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
     }
     else if (data.left == 1 && data.right == 0)
     {
-        MOT_setspeeds(speed_low, speed_high);
+        MOT_setspeeds(LF_CORRECTION_SPEED, FORWARD_SPEED);
     }
     else if (data.left == 0 && data.right == 1)
     {
-        MOT_setspeeds(speed_high, speed_low);
+        MOT_setspeeds(FORWARD_SPEED, LF_CORRECTION_SPEED);
     }
     return true;
 }
 
-bool blind_forwards() {
+bool MOVE_blind_forward_loop() {
     LS_data_t data = LS_read();
 
     if (data.far_left == 1 || data.left == 1 || data.right == 1 || data.far_right == 1) {

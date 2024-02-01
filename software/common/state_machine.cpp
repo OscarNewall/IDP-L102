@@ -1,7 +1,7 @@
 #include "navigation.h"
 #include "state_machine.h"
 #include "line_follow_straight_basic.h"
-#include "junction_id.h"
+#include "junction.h"
 
 NAV_turns_e state;
 

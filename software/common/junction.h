@@ -1,5 +1,5 @@
-#ifndef JUNCTION_ID_H
-#define JUNCTION_ID_H
+#ifndef JUNCTION_H
+#define JUNCTION_H
 
 typedef enum {
     JUNC_END,

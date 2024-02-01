@@ -1,5 +1,5 @@
 #include "src/line_follow_straight_basic.h"
-#include "src/junction_id.h"
+#include "src/junction.h"
 
 typedef enum {
     STRAIGHT,

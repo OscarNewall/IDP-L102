@@ -8,8 +8,8 @@
 #define FORWARD_SPEED 255
 #define LF_CORRECTION_SPEED 127
 
-bool straight_basic(int, int);
+bool MOVE_line_follow_loop();
 
-bool blind_forwards();
+bool MOVE_blind_forward_loop();
 
 #endif

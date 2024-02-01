@@ -34,7 +34,7 @@ void MOT_initialise() {
 // is_moving false if speeds are 0,0
 // Otherwise true
 void MOT_setspeeds(int leftspeed, int rightspeed) {
-    if (leftspeed == 0 and rightspeed ==0) {
+    if (leftspeed == 0 and rightspeed == 0) {
         is_moving = false;
     }
     else {
