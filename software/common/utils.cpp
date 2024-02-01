@@ -4,6 +4,13 @@
 
 #define LOGGING_CHAR_COUNT 200
 
+bool UTIL_reached_timeout(unsigned long start, unsigned long duration) {
+    if (millis() - start < duration) {
+        return false;
+    }
+    return true;
+}
+
 void UTIL_log(const char* format, ...) {
     char buf[LOGGING_CHAR_COUNT];
 
