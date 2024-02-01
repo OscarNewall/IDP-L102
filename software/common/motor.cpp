@@ -1,5 +1,7 @@
 #include "motor.h"
 
+#include "utils.h"
+
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
 Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
@@ -16,14 +18,12 @@ void MOT_initialise() {
     pinMode(blue_led, OUTPUT);
 
     if (!AFMS.begin()) {
-        Serial.println("Could not find left Motor Shield. Check wiring.");
-        while (1);
+        UTIL_error("Could not find left Motor Shield. Check wiring.\n");
     }
     if (!AFMS.begin()) {
-        Serial.println("Could not find right Motor Shield. Check wiring.");
-        while (1);
+        UTIL_error("Could not find left Motor Shield. Check wiring.\n");
     }
-    Serial.println("Both Motor Shields found.");
+    UTIL_log(LOG_INFO, "Both Motor Shields found.\n");
 
     leftmotor->run(RELEASE);
     rightmotor->run(RELEASE);
