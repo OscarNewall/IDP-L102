@@ -3,6 +3,8 @@
 #include "line_follow_straight_basic.h"
 #include "junction_id.h"
 
+NAV_turns_e state;
+
 void state_machine() {
 // Function to run repeatedly in main loop, executing the list of states in turns_order from navigation.cpp
     if (state == NAV_LINE_FOLLOW) {
