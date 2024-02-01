@@ -13,7 +13,7 @@ void setup() {
     bluetimer.start();
     state = NAV_next();
     Serial.print("Initial state: ");
-    Serial.print(state);
+    Serial.print(states[state]);
 }
 
 void loop() {

@@ -9,6 +9,8 @@ typedef enum {
     NAV_LINE_FOLLOW,
 } NAV_turns_e;
 
+char *states[5] = {"NAV_JUNC_LEFT,NAV_JUNC_RIGHT,NAV_JUNC_PASS,NAV_BLIND_FORWARDS,NAV_LINE_FOLLOW"};
+
 NAV_turns_e NAV_next();
 
 /*
