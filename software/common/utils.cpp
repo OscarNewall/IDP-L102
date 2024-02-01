@@ -8,7 +8,7 @@ void UTIL_log(const char* format, ...) {
     char buf[LOGGING_CHAR_COUNT];
 
     unsigned long msecs, secs, mins;
-    msecs = 82567;
+    msecs = millis();
     secs = msecs / 1000;
     mins = secs / 60;
     secs %= 60;

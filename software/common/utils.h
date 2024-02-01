@@ -12,7 +12,7 @@
 template <typename T, size_t N>
 char (&ArraySizeHelper(T (&a)[N]))[N];
 
-// log function to Serial with printf-style formatting
+// log function to Serial with printf-style formatting, prefixed with time
 void UTIL_log(const char* format, ...);
 
 // Infinite loop with printf-style error message
