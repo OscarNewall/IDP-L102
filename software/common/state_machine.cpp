@@ -8,7 +8,7 @@ NAV_turns_e state;
 void state_machine() {
 // Function to run repeatedly in main loop, executing the list of states in turns_order from navigation.cpp
     if (state == NAV_LINE_FOLLOW) {
-        if (!straight_basic(255,127)) {
+        if (!MOVE_line_follow_loop()) {
             state = NAV_next();
             JUNC_enter();
             Serial.println("Exiting line following");
@@ -32,7 +32,7 @@ void state_machine() {
     }
 
     else if (state == NAV_BLIND_FORWARDS) {
-        if (!blind_forwards()) {
+        if (!MOVE_blind_forward_loop()) {
             state = NAV_next();
             Serial.println("Exiting blind forwards");
             JUNC_enter();
