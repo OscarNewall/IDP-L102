@@ -6,7 +6,7 @@
 #include "motor.h"
 #include "line_follow_straight_basic.h"
 
-#define FORWARD_TIME_MS 500
+#define FORWARD_TIME_MS 1000
 #define TURN_SPEED 100
 
 static uint32_t turn_start_time;
