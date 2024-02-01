@@ -11,7 +11,17 @@ bool UTIL_reached_timeout(unsigned long start, unsigned long duration) {
     return true;
 }
 
-void UTIL_log(const char* format, ...) {
+static const char* log_level_strs[] = {
+    "DEBUG",
+    "INFO",
+    "WARNING"
+};
+
+void UTIL_log(UTIL_log_e log_level, const char* format, ...) {
+    if (log_level < LOG_LEVEL) {
+        return;
+    }
+
     char buf[LOGGING_CHAR_COUNT];
 
     unsigned long msecs, secs, mins;
@@ -21,7 +31,8 @@ void UTIL_log(const char* format, ...) {
     secs %= 60;
     msecs %= 1000;
 
-    size_t str_len = snprintf(buf, LOGGING_CHAR_COUNT, "%lu:%lu:%lu - ", mins, secs, msecs);
+    size_t str_len = snprintf(buf, LOGGING_CHAR_COUNT, "%lu:%lu:%lu %s - ",
+                              mins, secs, msecs, log_level_strs[log_level]);
 
     va_list vl;
     va_start(vl, format);
