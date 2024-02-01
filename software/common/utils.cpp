@@ -31,7 +31,7 @@ void UTIL_log(UTIL_log_e log_level, const char* format, ...) {
     secs %= 60;
     msecs %= 1000;
 
-    size_t str_len = snprintf(buf, LOGGING_CHAR_COUNT, "%lu:%lu:%lu %s - ",
+    size_t str_len = snprintf(buf, LOGGING_CHAR_COUNT, "%lu:%2lu:%3lu %s - ",
                               mins, secs, msecs, log_level_strs[log_level]);
 
     va_list vl;
