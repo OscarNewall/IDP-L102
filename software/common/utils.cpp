@@ -21,7 +21,7 @@ void UTIL_log(const char* format, ...) {
     secs %= 60;
     msecs %= 1000;
 
-    size_t str_len = snprintf(buf, LOGGING_CHAR_COUNT, "%u:%u:%u - ", mins, secs, msecs);
+    size_t str_len = snprintf(buf, LOGGING_CHAR_COUNT, "%lu:%lu:%lu - ", mins, secs, msecs);
 
     va_list vl;
     va_start(vl, format);
