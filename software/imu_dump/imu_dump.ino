@@ -2,19 +2,29 @@
 #include <Ticker.h>
 
 #define measurement 1 // 1 for acceleration, 2 for gyro
-#define data_points 1000 // how many datapoints to record in each array
-#define repeats 20 // how many arrays to send
+#define data_points 512 // how many datapoints to record in each array
+//#define repeats 20 // how many arrays to send
 #define interval 150 // ticker interval in microseconds
 
+#define LSM_CS 30
+#define LSM_SCK 34
+#define LSM_MISO 33
+#define LSM_MOSI 32
+#define LSM_INT 31
+
+void callback_save_measurement();
+
 Adafruit_LSM6DS3 imu;
-Ticker timer(callback_save_measurement, interval, data_points, MICROS_MICROS);
+Ticker timer(callback_save_measurement, interval, 0, MICROS_MICROS);
 float data[data_points];
 int index_datapoint = 0;
 int index_array = 0;
 
 void setup() {
     Serial.begin(9600);
-    imu.begin_I2C();
+    if(!imu.begin_SPI(LSM_CS, LSM_SCK, LSM_MISO, LSM_MOSI)) {
+        Serial.println("Failed to find IMU");
+    }
     /**
     LSM6DS_RATE_12_5_HZ,
     LSM6DS_RATE_26_HZ,
@@ -48,8 +58,10 @@ void setup() {
 
 void loop() {
     // put your main code here, to run repeatedly:
-    if(index_datapoint == data_points && index_array < repeats) {
+    timer.update();
+    if(index_datapoint = data_points) {
         Serial.write((byte*)data, data_points * sizeof(data[0]));
+        Serial.println();
         index_datapoint = 0;
         index_array++;
     }
