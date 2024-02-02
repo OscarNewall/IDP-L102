@@ -1,8 +1,8 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
-void state_machine();
+void STATE_setup();
 
-extern NAV_turns_e state;
+void STATE_loop();
 
 #endif
