@@ -9,7 +9,7 @@ static NAV_turns_e state;
 void STATE_setup() {
     state = NAV_next();
     UTIL_reset_start_time();
-    UTIL_log(LOG_INFO, "Initial state: %s", states[state]);
+    UTIL_log(LOG_INFO, "Initial state: %s\n", states[state]);
 }
 
 void STATE_loop() {
