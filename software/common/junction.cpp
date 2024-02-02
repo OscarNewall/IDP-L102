@@ -10,12 +10,6 @@
 #define FORWARD_TIME_MS 1000
 #define TURN_SPEED 100
 
-static uint32_t turn_start_time;
-
-void JUNC_enter() {
-    UTIL_reset_start_time();
-}
-
 bool JUNC_pass_loop() {
     if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
