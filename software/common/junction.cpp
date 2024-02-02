@@ -5,18 +5,13 @@
 #include "line_sensor.h"
 #include "motor.h"
 #include "line_follow_straight_basic.h"
+#include "utils.h"
 
 #define FORWARD_TIME_MS 1000
 #define TURN_SPEED 100
 
-static uint32_t turn_start_time;
-
-void JUNC_enter() {
-    turn_start_time = millis();
-}
-
 bool JUNC_pass_loop() {
-    if (millis() - turn_start_time < FORWARD_TIME_MS) {
+    if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
         return true;
     }
@@ -28,7 +23,7 @@ bool JUNC_pass_loop() {
 bool JUNC_turn_loop(bool is_left) {
     LS_data_t ls_out = LS_read();
 
-    if (millis() - turn_start_time < FORWARD_TIME_MS) {
+    if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
         return true;
     }
