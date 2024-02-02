@@ -53,5 +53,12 @@ void STATE_loop() {
             // Don't need to JUNC_ENTER here as next state always NAV_LINE_FOLLOW
         }
     }
+
+    else if (state == NAV_SLEEP) {
+        if (!UTIL_sleep_loop()) {
+            state = NAV_next();
+            UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        }
+    }
     
 }

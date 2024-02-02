@@ -2,14 +2,26 @@
 
 #include "motor.h"
 
-#define LOGGING_CHAR_COUNT 200
+#define SLEEP_STATE_MS 1000
 
-bool UTIL_reached_timeout(unsigned long start, unsigned long duration) {
-    if (millis() - start < duration) {
+static unsigned long start_ms;
+
+void UTIL_reset_start_time() {
+    start_ms = millis();
+}
+
+bool UTIL_reached_timeout(unsigned long duration) {
+    if (millis() - start_ms < duration) {
         return false;
     }
     return true;
 }
+
+bool UTIL_sleep_loop() {
+    return !UTIL_reached_timeout(SLEEP_STATE_MS);
+}
+
+#define LOGGING_CHAR_COUNT 200
 
 static const char* log_level_strs[] = {
     "DEBUG",

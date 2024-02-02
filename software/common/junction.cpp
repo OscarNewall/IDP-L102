@@ -13,11 +13,11 @@
 static uint32_t turn_start_time;
 
 void JUNC_enter() {
-    turn_start_time = millis();
+    UTIL_reset_start_time();
 }
 
 bool JUNC_pass_loop() {
-    if (UTIL_reached_timeout(turn_start_time, FORWARD_TIME_MS)) {
+    if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
         return true;
     }
@@ -29,7 +29,7 @@ bool JUNC_pass_loop() {
 bool JUNC_turn_loop(bool is_left) {
     LS_data_t ls_out = LS_read();
 
-    if (UTIL_reached_timeout(turn_start_time, FORWARD_TIME_MS)) {
+    if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
         return true;
     }

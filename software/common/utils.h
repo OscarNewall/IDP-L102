@@ -12,8 +12,13 @@
 template <typename T, size_t N>
 char (&ArraySizeHelper(T (&a)[N]))[N];
 
+// Resets start time for timeout function
+void UTIL_reset_start_time();
+
 // Returns false until timeout reached - all times in ms
-bool UTIL_reached_timeout(unsigned long start, unsigned long duration);
+bool UTIL_reached_timeout(unsigned long duration);
+
+bool UTIL_sleep_loop();
 
 typedef enum {
     LOG_DEBUG,
