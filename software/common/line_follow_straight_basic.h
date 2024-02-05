@@ -12,4 +12,6 @@ bool MOVE_line_follow_loop();
 
 bool MOVE_blind_forward_loop();
 
+bool MOVE_reverse_line_follow_loop();
+
 #endif

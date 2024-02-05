@@ -22,6 +22,14 @@ void STATE_loop() {
         }
     }
 
+    if (state == NAV_REVERSE_LINE_FOLLOW) {
+        if (!MOVE_reverse_line_follow_loop()) {
+            state = NAV_next();
+            UTIL_reset_start_time();
+            UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        }
+    }
+
     else if (state == NAV_JUNC_LEFT) {
         if (!JUNC_turn_loop(true)) { // True for left
             state = NAV_next();

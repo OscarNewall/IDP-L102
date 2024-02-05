@@ -8,6 +8,7 @@ typedef enum {
     NAV_BLIND_FORWARDS,
     NAV_LINE_FOLLOW,
     NAV_SLEEP,
+    NAV_REVERSE_LINE_FOLLOW
 } NAV_turns_e; // Keep upto date with states in navigation.cpp
 
 extern char* states[];
