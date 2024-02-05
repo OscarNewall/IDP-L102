@@ -30,16 +30,32 @@ void STATE_loop() {
         }
     }
 
-    else if (state == NAV_JUNC_LEFT) {
-        if (!JUNC_turn_loop(true)) { // True for left
+    else if (state == NAV_JUNC_FORWARD_LEFT) {
+        if (!JUNC_forward_turn_loop(true)) { // True for left
             state = NAV_next();
             UTIL_reset_start_time();
             UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
         }
     }
 
-    else if (state == NAV_JUNC_RIGHT) {
-        if (!JUNC_turn_loop(false)) { // False for right
+    else if (state == NAV_JUNC_FORWARD_RIGHT) {
+        if (!JUNC_forward_turn_loop(false)) { // False for right
+            state = NAV_next();
+            UTIL_reset_start_time();
+            UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        }
+    }
+
+    else if (state == NAV_JUNC_REVERSE_LEFT) {
+        if (!JUNC_reverse_turn_loop(true)) { // True for left
+            state = NAV_next();
+            UTIL_reset_start_time();
+            UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        }
+    }
+
+    else if (state == NAV_JUNC_REVERSE_RIGHT) {
+        if (!JUNC_reverse_turn_loop(false)) { // False for right
             state = NAV_next();
             UTIL_reset_start_time();
             UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);

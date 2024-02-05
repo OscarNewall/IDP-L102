@@ -10,6 +10,8 @@ typedef enum {
 
 bool JUNC_pass_loop();
 
-bool JUNC_turn_loop(bool is_left);
+bool JUNC_forward_turn_loop(bool is_left);
+
+bool JUNC_reverse_turn_loop(bool is_left);
 
 #endif
