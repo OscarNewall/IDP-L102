@@ -5,7 +5,7 @@
 Servo myservo;
 int previous_servo_pos = 0;
 int servo_pos = 0;
-int servo_pin;// NEED TO INPUT SERVO PIN NUMBER HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+int servo_pin = 8;
 bool switch_pressed = false;
 int crashswitchPin;// NEED TO INPUT SWITCH PIN NUMBER HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
