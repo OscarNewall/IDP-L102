@@ -22,6 +22,10 @@ static NAV_turns_e turns_order[] = {
     NAV_BLIND_FORWARDS,
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW_FOR_TIME
 };
 
 static NAV_turns_e route_start_to_res1[] = {
