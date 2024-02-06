@@ -6,8 +6,8 @@
 
 static NAV_turns_e state;
 
-int green_led; // Need to give pin numbers to indicator leds
-int red_led;
+int green_led = 6;
+int red_led = 5;
 
 void STATE_setup() {
     state = NAV_next();
