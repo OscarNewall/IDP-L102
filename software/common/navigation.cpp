@@ -10,13 +10,13 @@ char *states[] = {
     "NAV_JUNC_PASS",
     "NAV_BLIND_FORWARDS",
     "NAV_LINE_FOLLOW",
-    "NAV_SLEEP"
+    "NAV_SLEEP",
     "NAV_REVERSE_LINE_FOLLOW",
     "NAV_INIT_180_LEFT",
     "NAV_INIT_180_RIGHT",
-    "NAV_LINE_FOLLOW_FOR_TIME"
+    "NAV_LINE_FOLLOW_FOR_TIME",
     "NAV_INDICATE_SOLID",
-    "NAV_INDICATE_FOAM"
+    "NAV_INDICATE_FOAM",
 };
 
 static NAV_turns_e turns_order[] = {
