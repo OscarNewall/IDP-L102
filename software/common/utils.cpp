@@ -18,6 +18,7 @@ bool UTIL_reached_timeout(unsigned long duration) {
 }
 
 bool UTIL_sleep_loop() {
+    MOT_setspeeds(0, 0);
     return !UTIL_reached_timeout(SLEEP_STATE_MS);
 }
 

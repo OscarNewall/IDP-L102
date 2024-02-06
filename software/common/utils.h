@@ -29,7 +29,7 @@ typedef enum {
     LOG_WARNING
 } UTIL_log_e; // Keep upto date with log_level_strs in utils.cpp
 
-#define LOG_LEVEL LOG_DEBUG
+#define LOG_LEVEL LOG_INFO
 
 // log function to Serial with printf-style formatting, prefixed with time
 void UTIL_log(UTIL_log_e log_level, const char* format, ...);

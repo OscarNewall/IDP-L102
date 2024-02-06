@@ -10,7 +10,7 @@
 #define FORWARD_TIME_MS 350
 #define SHORT_FORWARD_TIME_MS 250 // For turns where the junction has been reversed into, so shorter step forward needed
 #define TURN_SPEED 200
-#define PARTIAL_TURN_TIME_MS 300  // Time for a ~60 degree turn
+#define PARTIAL_TURN_TIME_MS 800  // Time for a ~60 degree turn
 
 bool JUNC_pass_loop() {
     if (!UTIL_reached_timeout(FORWARD_TIME_MS)) {

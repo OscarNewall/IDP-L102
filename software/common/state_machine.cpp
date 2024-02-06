@@ -108,7 +108,7 @@ void STATE_loop() {
     }
 
     else if (state == NAV_LINE_FOLLOW_FOR_TIME) {
-        if (!MOVE_line_follow_for_time(2500)) {
+        if (!MOVE_line_follow_for_time(2000)) {
             state = NAV_next();
             UTIL_reset_start_time();
             UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
