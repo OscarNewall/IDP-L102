@@ -21,6 +21,12 @@ bool UTIL_sleep_loop() {
     return !UTIL_reached_timeout(SLEEP_STATE_MS);
 }
 
+void UTIL_time_func(void (*func)(void), char* func_name) {
+    unsigned long start_us = micros();
+    func();
+    UTIL_log(LOG_DEBUG, "%s took %luus\n", func_name, (micros() - start_us));
+}
+
 #define LOGGING_CHAR_COUNT 200
 
 static const char* log_level_strs[] = {
@@ -71,5 +77,6 @@ void UTIL_error(const char* format, ...) {
         #ifdef USE_SERIAL
         Serial.print(buf);
         #endif
+        delay(500);
     }
 }

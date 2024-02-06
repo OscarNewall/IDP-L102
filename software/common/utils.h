@@ -20,13 +20,16 @@ bool UTIL_reached_timeout(unsigned long duration);
 
 bool UTIL_sleep_loop();
 
+// Logs the execution time for the function in microseconds
+void UTIL_time_func(void (*func)(void), char* func_name);
+
 typedef enum {
     LOG_DEBUG,
     LOG_INFO,
     LOG_WARNING
 } UTIL_log_e; // Keep upto date with log_level_strs in utils.cpp
 
-#define LOG_LEVEL LOG_INFO
+#define LOG_LEVEL LOG_DEBUG
 
 // log function to Serial with printf-style formatting, prefixed with time
 void UTIL_log(UTIL_log_e log_level, const char* format, ...);
