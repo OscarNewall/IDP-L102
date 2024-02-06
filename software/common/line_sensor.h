@@ -22,4 +22,10 @@ void LS_setup();
 
 LS_data_t LS_read();
 
+// Makes new reading and stores in buffer
+void LS_new_read();
+
+// Averages readings in buffer and returns result
+LS_data_t LS_get_data();
+
 #endif
