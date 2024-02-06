@@ -15,6 +15,8 @@ char *states[] = {
     "NAV_INIT_180_LEFT",
     "NAV_INIT_180_RIGHT",
     "NAV_LINE_FOLLOW_FOR_TIME"
+    "NAV_INDICATE_SOLID",
+    "NAV_INDICATE_FOAM"
 };
 
 static NAV_turns_e turns_order[] = {
@@ -40,6 +42,7 @@ static NAV_turns_e route_start_to_res1[] = {
 };
 
 static NAV_turns_e route_res1_to_green_to_res2[] = {
+    NAV_INDICATE_FOAM,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_LEFT,
     NAV_LINE_FOLLOW,
@@ -60,6 +63,7 @@ static NAV_turns_e route_res1_to_green_to_res2[] = {
 };
 
 static NAV_turns_e route_res1_to_red_to_res2[] = {
+    NAV_INDICATE_SOLID,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_RIGHT,
     NAV_LINE_FOLLOW,
@@ -81,6 +85,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
 };
 
 static NAV_turns_e route_res2_to_green[] = {
+    NAV_INDICATE_FOAM,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_RIGHT,
     NAV_LINE_FOLLOW,
@@ -96,6 +101,7 @@ static NAV_turns_e route_res2_to_green[] = {
 };
 
 static NAV_turns_e route_res2_to_red[] = {
+    NAV_INDICATE_SOLID,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_LEFT,
     NAV_LINE_FOLLOW,

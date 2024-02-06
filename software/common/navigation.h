@@ -26,7 +26,9 @@ typedef enum {
     NAV_REVERSE_LINE_FOLLOW,
     NAV_INIT_180_LEFT,
     NAV_INIT_180_RIGHT,
-    NAV_LINE_FOLLOW_FOR_TIME
+    NAV_LINE_FOLLOW_FOR_TIME,
+    NAV_INDICATE_SOLID,
+    NAV_INDICATE_FOAM
 } NAV_turns_e; // Keep upto date with states in navigation.cpp
 
 extern char* states[];

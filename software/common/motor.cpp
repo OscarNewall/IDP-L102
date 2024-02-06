@@ -70,6 +70,6 @@ void LED_flashblue() {
     }
     else {
         // If moving, toggle led
-        digitalWrite (blue_led, !digitalRead (blue_led));
+        digitalWrite(blue_led, !digitalRead (blue_led));
     }
 }

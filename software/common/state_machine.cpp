@@ -6,10 +6,15 @@
 
 static NAV_turns_e state;
 
+int green_led; // Need to give pin numbers to indicator leds
+int red_led;
+
 void STATE_setup() {
     state = NAV_next();
     UTIL_reset_start_time();
     UTIL_log(LOG_INFO, "Initial state: %s\n", states[state]);
+    pinMode(green_led, OUTPUT);
+    pinMode(red_led, OUTPUT);
 }
 
 void STATE_loop() {
@@ -109,5 +114,26 @@ void STATE_loop() {
             UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
         }
     }
-    
+     
+    else if (state == NAV_INDICATE_SOLID) {
+        MOT_setspeeds(0, 0);
+        digitalWrite(red_led, HIGH); // While in this state make sure red led is on and vehicle is stationary
+        if (UTIL_reached_timeout(5500)) {
+            digitalWrite(red_led, LOW); // Timer up so turn off red indicator led
+            state = NAV_next();
+            UTIL_reset_start_time();
+            UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        }
+    }
+
+    else if (state == NAV_INDICATE_FOAM) {
+        MOT_setspeeds(0, 0);
+        digitalWrite(green_led, HIGH); // While in this state make sure green led is on and vehicle is stationary
+        if (UTIL_reached_timeout(5500)) {
+            digitalWrite(green_led, LOW); // Timer up so turn off green indicator led
+            state = NAV_next();
+            UTIL_reset_start_time();
+            UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        }
+    }
 }
