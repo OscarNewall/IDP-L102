@@ -1,5 +1,7 @@
 #include "line_follow_straight_basic.h"
 
+#include "utils.h"
+
 bool MOVE_line_follow_loop() {
     LS_data_t data = LS_read();
     if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0))
@@ -57,7 +59,7 @@ bool MOVE_reverse_line_follow_loop() {
 }
 
 bool MOVE_line_follow_for_time(int time_ms) {
-    LS_data_t ls_out = LS_read();
+    LS_data_t data = LS_read();
     
     if (!UTIL_reached_timeout(time_ms)) {
         if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0)) {
