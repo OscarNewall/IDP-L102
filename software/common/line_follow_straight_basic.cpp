@@ -1,21 +1,82 @@
 #include "line_follow_straight_basic.h"
 
-void straight_basic(int speed_high, int speed_low) {
+#include "utils.h"
+
+bool MOVE_line_follow_loop() {
     LS_data_t data = LS_read();
-    if (data.far_left == 1 or data.far_right == 1 or (data.left == 0 and data.right == 0))
+    if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0))
     {
         MOT_setspeeds(0, 0);
+        return false;
     }
-    else if (data.left == 1 and data.right == 1)
+    else if (data.left == 1 && data.right == 1)
     {
-        MOT_setspeeds(speed_high, speed_high);
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
     }
-    else if (data.left == 1 and data.right == 0)
+    else if (data.left == 1 && data.right == 0)
     {
-        MOT_setspeeds(speed_low, speed_high);
+        MOT_setspeeds(LF_CORRECTION_SPEED, FORWARD_SPEED);
     }
-    else if (data.left == 0 and data.right == 1)
+    else if (data.left == 0 && data.right == 1)
     {
-        MOT_setspeeds(speed_high, speed_low);
-    }  
+        MOT_setspeeds(FORWARD_SPEED, LF_CORRECTION_SPEED);
+    }
+    return true;
 }
+
+bool MOVE_blind_forward_loop() {
+    LS_data_t data = LS_read();
+
+    if (data.far_left == 1 || data.left == 1 || data.right == 1 || data.far_right == 1) {
+        MOT_setspeeds(0, 0);
+        return false;
+    }
+
+    MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+    return true;
+}
+
+bool MOVE_reverse_line_follow_loop() {
+    LS_data_t data = LS_read();
+    if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0))
+    {
+        MOT_setspeeds(0, 0);
+        return false;
+    }
+    else if (data.left == 1 && data.right == 1)
+    {
+        MOT_setspeeds(-FORWARD_SPEED, -FORWARD_SPEED);
+    }
+    else if (data.left == 1 && data.right == 0)
+    {
+        MOT_setspeeds(-LF_CORRECTION_SPEED, -FORWARD_SPEED);
+    }
+    else if (data.left == 0 && data.right == 1)
+    {
+        MOT_setspeeds(-FORWARD_SPEED, -LF_CORRECTION_SPEED);
+    }
+    return true;
+}
+
+bool MOVE_line_follow_for_time(int time_ms) {
+    LS_data_t data = LS_read();
+    
+    if (!UTIL_reached_timeout(time_ms)) {
+        if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0)) {
+            MOT_setspeeds(0, 0);
+            return false;
+        }
+        else if (data.left == 1 && data.right == 1) {
+            MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+        }
+        else if (data.left == 1 && data.right == 0) {
+            MOT_setspeeds(LF_CORRECTION_SPEED, FORWARD_SPEED);
+        }
+        else if (data.left == 0 && data.right == 1) {
+            MOT_setspeeds(FORWARD_SPEED, LF_CORRECTION_SPEED);
+        }
+        return true;
+    }
+    return false;
+}
+

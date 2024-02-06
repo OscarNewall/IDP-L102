@@ -1,8 +1,10 @@
 #include "src/line_sensor.h"
+#include "src/motor.h"
 
 void setup() {
   Serial.begin(9600);
   LS_setup();
+  MOT_initialise();
 }
 
 void loop() {
