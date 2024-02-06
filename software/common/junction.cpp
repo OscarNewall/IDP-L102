@@ -7,9 +7,9 @@
 #include "line_follow_straight_basic.h"
 #include "utils.h"
 
-#define FORWARD_TIME_MS 1000
-#define SHORT_FORWARD_TIME_MS 500 // For turns where the junction has been reversed into, so shorter step forward needed
-#define TURN_SPEED 100
+#define FORWARD_TIME_MS 350
+#define SHORT_FORWARD_TIME_MS 250 // For turns where the junction has been reversed into, so shorter step forward needed
+#define TURN_SPEED 200
 
 bool JUNC_pass_loop() {
     if (!UTIL_reached_timeout(FORWARD_TIME_MS)) {
