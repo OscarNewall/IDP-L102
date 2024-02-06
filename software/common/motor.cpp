@@ -2,8 +2,8 @@
 
 #include "utils.h"
 
-#define max_leftspeed 200
-#define max_rightspeed 255
+#define multiplier_leftspeed 0.8
+#define multiplier_rightspeed 1
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
@@ -56,8 +56,8 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
         else {
             rightmotor->run(BACKWARD);
         }
-	    leftmotor->setSpeed(abs(leftspeed) * max_leftspeed);
-	    rightmotor->setSpeed(abs(rightspeed) * max_rightspeed);
+	    leftmotor->setSpeed(abs(leftspeed) * multiplier_leftspeed);
+	    rightmotor->setSpeed(abs(rightspeed) * multiplier_rightspeed);
         last_leftspeed = leftspeed;
         last_rightspeed = rightspeed;
     }
