@@ -12,6 +12,19 @@ void setup() {
     MOT_initialise();
     STATE_setup();
     bluetimer.start();
+
+    int startbuttonPin = 3; // can change
+    pinMode(startbuttonPin, INPUT);
+    
+    while (1){
+        int val = digitalRead(startbuttonPin);
+        if (val == HIGH){
+            break;
+        }
+
+    }
+
+
 }
 
 void loop() {
