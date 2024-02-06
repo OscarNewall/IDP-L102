@@ -1,5 +1,7 @@
 #include "flipper.h"
 
+#include <Arduino.h>
+
 Servo myservo;
 int previous_servo_pos = 0;
 int servo_pos = 0;
