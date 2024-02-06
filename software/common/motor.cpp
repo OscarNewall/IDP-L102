@@ -2,6 +2,9 @@
 
 #include "utils.h"
 
+#define multiplier_leftspeed 0.9
+#define multiplier_rightspeed 1
+
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
 Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
@@ -53,8 +56,8 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
         else {
             rightmotor->run(BACKWARD);
         }
-	    leftmotor->setSpeed(abs(leftspeed));
-	    rightmotor->setSpeed(abs(rightspeed));
+	    leftmotor->setSpeed(abs(leftspeed) * multiplier_leftspeed);
+	    rightmotor->setSpeed(abs(rightspeed) * multiplier_rightspeed);
         last_leftspeed = leftspeed;
         last_rightspeed = rightspeed;
     }
