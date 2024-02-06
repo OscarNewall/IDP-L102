@@ -35,3 +35,32 @@ LS_data_t LS_read() {
     prev_data = data;
     return data;
 }
+
+#define BUF_SIZE 10
+
+static LS_data_t data_buffer[BUF_SIZE];
+
+static unsigned int buf_index = 0;
+
+void LS_new_read() {
+    data_buffer[buf_index] = LS_read();
+    buf_index++;
+    buf_index = buf_index % BUF_SIZE;
+}
+
+LS_data_t LS_get_data() {
+    unsigned int far_left, left, right, far_right = 0;
+    for (unsigned int i = 0; i < BUF_SIZE; i++) {
+        far_left += data_buffer[i].far_left;
+        left += data_buffer[i].left;
+        right += data_buffer[i].right;
+        far_right += data_buffer[i].far_right;
+    }
+
+    LS_data_t output;
+    output.far_left = far_left > (BUF_SIZE / 2);
+    output.left = left > (BUF_SIZE / 2);
+    output.right = right > (BUF_SIZE / 2);
+    output.far_right = far_right > (BUF_SIZE / 2);
+    return output;
+}
