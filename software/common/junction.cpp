@@ -12,7 +12,7 @@
 #define TURN_SPEED 100
 
 bool JUNC_pass_loop() {
-    if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
+    if (!UTIL_reached_timeout(FORWARD_TIME_MS)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
         return true;
     }
@@ -25,13 +25,13 @@ bool JUNC_turn_loop(bool is_left, bool short_forward_step) {
     LS_data_t ls_out = LS_read();
 
     if (short_forward_step) {
-        if (UTIL_reached_timeout(SHORT_FORWARD_TIME_MS)) {
+        if (!UTIL_reached_timeout(SHORT_FORWARD_TIME_MS)) {
             MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
             return true;
         }
     }
     else {
-        if (UTIL_reached_timeout(FORWARD_TIME_MS)) {
+        if (!UTIL_reached_timeout(FORWARD_TIME_MS)) {
             MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
             return true;
         }
@@ -56,7 +56,7 @@ bool JUNC_init_180_loop(bool is_left) {
     LS_data_t ls_out = LS_read();
 
     // Blind reversing a little
-    if (UTIL_reached_timeout(FORWARD_TIME_MS*2)) {
+    if (!UTIL_reached_timeout(FORWARD_TIME_MS*2)) {
             MOT_setspeeds(-FORWARD_SPEED, -FORWARD_SPEED);
             return true;
         }

@@ -14,6 +14,7 @@ char *states[] = {
     "NAV_REVERSE_LINE_FOLLOW",
     "NAV_INIT_180_LEFT",
     "NAV_INIT_180_RIGHT",
+    "NAV_LINE_FOLLOW_FOR_TIME"
 };
 
 static NAV_turns_e turns_order[] = {
@@ -39,7 +40,7 @@ static NAV_turns_e route_res1_to_green_to_res2[] = {
     NAV_JUNC_REVERSE_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_LEFT,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_FOR_TIME,
     // Need to add drop off state here
     NAV_INIT_180_LEFT,
     NAV_JUNC_REVERSE_LEFT,
@@ -61,7 +62,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_FOR_TIME,
     // Need to add drop off state here
     NAV_INIT_180_RIGHT,
     NAV_JUNC_REVERSE_RIGHT,
@@ -86,7 +87,7 @@ static NAV_turns_e route_res2_to_green[] = {
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_FOR_TIME,
     // Need to add drop off state here
 };
 
@@ -99,7 +100,7 @@ static NAV_turns_e route_res2_to_red[] = {
     NAV_JUNC_FORWARD_RIGHT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_FOR_TIME,
     // Need to add drop off state here
 };
 

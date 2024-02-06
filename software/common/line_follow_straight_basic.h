@@ -14,4 +14,6 @@ bool MOVE_blind_forward_loop();
 
 bool MOVE_reverse_line_follow_loop();
 
+bool MOVE_line_follow_for_time(int time_ms);
+
 #endif

@@ -55,3 +55,26 @@ bool MOVE_reverse_line_follow_loop() {
     }
     return true;
 }
+
+bool MOVE_line_follow_for_time(int time_ms) {
+    LS_data_t ls_out = LS_read();
+    
+    if (!UTIL_reached_timeout(time_ms)) {
+        if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0)) {
+            MOT_setspeeds(0, 0);
+            return false;
+        }
+        else if (data.left == 1 && data.right == 1) {
+            MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+        }
+        else if (data.left == 1 && data.right == 0) {
+            MOT_setspeeds(LF_CORRECTION_SPEED, FORWARD_SPEED);
+        }
+        else if (data.left == 0 && data.right == 1) {
+            MOT_setspeeds(FORWARD_SPEED, LF_CORRECTION_SPEED);
+        }
+        return true;
+    }
+    return false;
+}
+
