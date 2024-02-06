@@ -2,12 +2,14 @@
 #define STATE_MACHINE_H
 
 typedef enum {
-    REPEAT,
-    EXIT,
-    ERROR,
-    DETECTION_SOLID,
-    DETECTION_FOAM,
+    STATE_REPEAT,
+    STATE_EXIT,
+    STATE_ERROR,
+    STATE_DETECTION_SOLID,
+    STATE_DETECTION_FOAM,
 } STATE_result_e;
+
+STATE_result_e STATE_sleep_loop();
 
 void STATE_setup();
 

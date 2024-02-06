@@ -56,15 +56,15 @@ bool SERV_drop_off() {
 }
 
 // need to change func type here to fit returning enums
-bool SERV_pick_up_and_detect() {
+STATE_result_e SERV_pick_up_and_detect() {
 // Moves servo from fully open to fully closed, if limit switch is pressed then returns hard if not returns soft
     SERV_turn_to_angle(SERVO_CLOSED_ANGLE);
     if (switch_pressed == false) {
-        return DETECTION_FOAM;
+        return STATE_DETECTION_FOAM;
     }
     else {
         // Reset switch_pressed for next time, then return that block was solid
         switch_pressed == false;
-        return DETECTION_SOLID;
+        return STATE_DETECTION_SOLID;
     }
 }

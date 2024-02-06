@@ -18,8 +18,6 @@ void UTIL_reset_start_time();
 // Returns false until timeout reached - all times in ms
 bool UTIL_reached_timeout(unsigned long duration);
 
-bool UTIL_sleep_loop();
-
 // Logs the execution time for the function in microseconds
 void UTIL_time_func(void (*func)(void), char* func_name);
 

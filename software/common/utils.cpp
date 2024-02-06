@@ -2,8 +2,6 @@
 
 #include "motor.h"
 
-#define SLEEP_STATE_MS 1000
-
 static unsigned long start_ms;
 
 void UTIL_reset_start_time() {
@@ -15,11 +13,6 @@ bool UTIL_reached_timeout(unsigned long duration) {
         return false;
     }
     return true;
-}
-
-bool UTIL_sleep_loop() {
-    MOT_setspeeds(0, 0);
-    return !UTIL_reached_timeout(SLEEP_STATE_MS);
 }
 
 void UTIL_time_func(void (*func)(void), char* func_name) {
