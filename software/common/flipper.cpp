@@ -2,6 +2,9 @@
 #include "state_machine.h"
 #include <Arduino.h>
 
+#define SERVO_CLOSED_ANGLE 0 /*add fully closed angle here*/
+#define SERVO_OPEN_ANGLE 0 /*add fully open angle here*/
+
 Servo myservo;
 int previous_servo_pos = 0;
 int servo_pos = 0;
@@ -48,14 +51,14 @@ void SERV_turn_to_angle(int target_pos) {
 
 bool SERV_drop_off() {
 // State function to drop off block
-    SERV_turn_to_angle(/*add fully open angle here*/);
+    SERV_turn_to_angle(SERVO_OPEN_ANGLE);
     return false;
 }
 
 // need to change func type here to fit returning enums
 bool SERV_pick_up_and_detect() {
 // Moves servo from fully open to fully closed, if limit switch is pressed then returns hard if not returns soft
-    SERV_turn_to_angle(/*Fully closed*/);
+    SERV_turn_to_angle(SERVO_CLOSED_ANGLE);
     if (switch_pressed == false) {
         return DETECTION_FOAM;
     }
