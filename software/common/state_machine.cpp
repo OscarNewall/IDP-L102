@@ -6,9 +6,6 @@
 
 static NAV_turns_e state;
 
-int green_led = 6;
-int red_led = 5;
-
 #define SLEEP_STATE_MS 1000
 
 STATE_result_e STATE_sleep_loop() {

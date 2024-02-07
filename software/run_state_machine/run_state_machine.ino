@@ -3,6 +3,7 @@
 #include "src/navigation.h"
 #include "src/state_machine.h"
 #include "src/utils.h"
+#include "src/flipper.h"
 
 Ticker bluetimer(LED_flashblue, 500, 0, MILLIS);
 
@@ -10,6 +11,7 @@ void setup() {
     Serial.begin(9600);
     LS_setup();
     MOT_initialise();
+    SERV_initialise();
     bluetimer.start();
 
     int startbuttonPin = 3; // can change

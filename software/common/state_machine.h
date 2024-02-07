@@ -1,6 +1,9 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
+#define green_led 6
+#define red_led 5
+
 typedef enum {
     STATE_REPEAT,
     STATE_EXIT,

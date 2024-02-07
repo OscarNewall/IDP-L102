@@ -2,8 +2,8 @@
 #include "state_machine.h"
 #include <Arduino.h>
 
-#define SERVO_CLOSED_ANGLE 0 /*add fully closed angle here*/
-#define SERVO_OPEN_ANGLE 0 /*add fully open angle here*/
+#define SERVO_CLOSED_ANGLE 139 /*add fully closed angle here*/
+#define SERVO_OPEN_ANGLE 67 /*add fully open angle here*/
 
 Servo myservo;
 int previous_servo_pos = 0;
@@ -16,6 +16,7 @@ void SERV_initialise() {
 // Function to be added to ino setup loop, initialises servo and block detection switch
     myservo.attach(servo_pin);
     pinMode(crashswitchPin, INPUT);
+    SERV_turn_to_angle(100);
 }
 
 void SERV_turn_to_angle(int target_pos) {
@@ -32,7 +33,7 @@ void SERV_turn_to_angle(int target_pos) {
                 // switch pressed if LOW
                 switch_pressed = true;
             }
-            delay(15);
+            delay(40);
         }
     }
     else if (previous_servo_pos > target_pos) {
@@ -43,7 +44,7 @@ void SERV_turn_to_angle(int target_pos) {
                 // switch pressed if LOW
                 switch_pressed = true;
             }
-            delay(15);
+            delay(40);
         }
     }
     previous_servo_pos = target_pos;
