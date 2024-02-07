@@ -1,16 +1,19 @@
 #include "flipper.h"
-#include "state_machine.h"
+
 #include <Arduino.h>
+
+#include "state_machine.h"
+#include "utils.h"
 
 #define SERVO_CLOSED_ANGLE 139 /*add fully closed angle here*/
 #define SERVO_OPEN_ANGLE 67 /*add fully open angle here*/
 
 Servo myservo;
-int previous_servo_pos = 0;
+int previous_servo_pos = 100;
 int servo_pos = 0;
 int servo_pin = 8;
 bool switch_pressed = false;
-int crashswitchPin;// NEED TO INPUT SWITCH PIN NUMBER HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+int crashswitchPin = 2;
 
 void SERV_initialise() {
 // Function to be added to ino setup loop, initialises servo and block detection switch
