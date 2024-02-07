@@ -6,9 +6,6 @@
 
 static NAV_turns_e state;
 
-int green_led = 6;
-int red_led = 5;
-
 STATE_result_e STATE_sleep_loop(unsigned long time_ms) {
     MOT_setspeeds(0, 0);
     return UTIL_reached_timeout(time_ms) ? STATE_EXIT : STATE_REPEAT;
@@ -66,29 +63,22 @@ void STATE_loop() {
         digitalWrite(red_led, HIGH); // While in this state make sure red led is on and vehicle is stationary
         result = STATE_sleep_loop(5500);
     }
-
     else if (state == NAV_INDICATE_FOAM) {
         digitalWrite(green_led, HIGH); // While in this state make sure green led is on and vehicle is stationary
         result = STATE_sleep_loop(5500);
+    }
+    else if (state == NAV_COMPLETE_180_LEFT) {
+        result = JUNC_complete_180_loop(true);
+    }
+    else if (state == NAV_COMPLETE_180_RIGHT) {
+        result = JUNC_complete_180_loop(false);
     }
 
     if (result != STATE_REPEAT) {
         digitalWrite(red_led, LOW);
         digitalWrite(green_led, LOW);
-        state = NAV_next(state);
+        state = NAV_next(result);
         UTIL_reset_start_time();
         UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
-    }
-
-    else if (state == NAV_COMPLETE_180_LEFT) {
-        if (JUNC_complete_180_loop(true) != STATE_REPEAT) {
-            next_state();
-        }
-    }
-
-    else if (state == NAV_COMPLETE_180_RIGHT) {
-        if (JUNC_complete_180_loop(false) != STATE_REPEAT) {
-            next_state();
-        }
     }
 }
