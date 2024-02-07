@@ -23,9 +23,13 @@ char *states[] = {
 
 static NAV_turns_e turns_order[] = {
 // The array currently used by NAV_next()
-    NAV_INDICATE_SOLID,
-    NAV_INDICATE_FOAM,
-    NAV_BLIND_FORWARDS
+    NAV_BLIND_FORWARDS,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW_FOR_TIME,
 };
 
 static NAV_turns_e route_start_to_res1[] = {
@@ -35,7 +39,7 @@ static NAV_turns_e route_start_to_res1[] = {
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_FOR_TIME,
     // Need to add pickup and detection states here
 };
 
