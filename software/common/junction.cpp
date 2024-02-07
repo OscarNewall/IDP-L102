@@ -38,7 +38,10 @@ STATE_result_e JUNC_turn_loop(bool is_left, bool short_forward_step) {
     }
 
     if (UTIL_reached_timeout(forward_time + PARTIAL_TURN_TIME_MS)) {
-        if (!ls_out.far_left && ls_out.left && ls_out.right && !ls_out.far_right) {
+        // For left turn require X110 in line sensor readings
+        // For right turn require 011X in line sensor readings
+        bool far_outside_off =  (is_left ? !ls_out.far_right : !ls_out.far_left);
+        if (ls_out.left && ls_out.right && far_outside_off) {
             MOT_setspeeds(0, 0);
             return STATE_EXIT;
         }
