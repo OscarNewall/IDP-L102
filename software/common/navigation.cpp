@@ -128,13 +128,38 @@ static NAV_turns_e route_res2_to_red[] = {
     // Need to add drop off state here
 };
 
-static unsigned int nav_pos_index = 0;
+static bool delivered_res1_block = false;
+static bool delivered_res2_block = false;
+static NAV_turns_e* current_turn_pos = route_start_to_res1;
 
-NAV_turns_e NAV_next() {
-    // Stay in SLEEP if reached end of turns_order
-    if (nav_pos_index >= ARRAY_SIZE(turns_order)) {
-        UTIL_log(LOG_WARNING, "Reached end of states - at index %u\n", nav_pos_index);
-        return NAV_SLEEP;
+NAV_turns_e NAV_next(STATE_result_e result) {
+    switch (result) {
+        case STATE_EXIT:
+            current_turn_pos++;
+            break;
+        case STATE_DETECTION_FOAM:
+            if (!delivered_res1_block) {
+                delivered_res1_block = true;
+                current_turn_pos = route_res1_to_green_to_res2;
+            }
+            else {
+                delivered_res2_block = true;
+                current_turn_pos = route_res2_to_green;
+            }
+            break;
+        case STATE_DETECTION_SOLID:
+            if (!delivered_res1_block) {
+                delivered_res1_block = true;
+                current_turn_pos = route_res1_to_red_to_res2;
+            }
+            else {
+                delivered_res2_block = true;
+                current_turn_pos = route_res2_to_red;
+            }
+            break;
+        default:
+            UTIL_error("Unexpected result passed to NAV_next: %i", result);
     }
-    return turns_order[nav_pos_index++];
+
+    return *current_turn_pos;
 }

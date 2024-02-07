@@ -1,6 +1,8 @@
 #ifndef NAVIGATION_H
 #define NAVIGATION_H
 
+#include "state_machine.h"
+
 /*
 Plan for 180 turns is to blind reverse a little,
 then turn left/right until middle sensors off the line
@@ -35,6 +37,6 @@ typedef enum {
 
 extern char* states[];
 
-NAV_turns_e NAV_next();
+NAV_turns_e NAV_next(STATE_result_e result);
 
 #endif
