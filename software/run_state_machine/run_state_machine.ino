@@ -10,7 +10,6 @@ void setup() {
     Serial.begin(9600);
     LS_setup();
     MOT_initialise();
-    STATE_setup();
     bluetimer.start();
 
     int startbuttonPin = 3; // can change
@@ -24,6 +23,7 @@ void setup() {
 
     }
 
+    STATE_setup();
 
 }
 

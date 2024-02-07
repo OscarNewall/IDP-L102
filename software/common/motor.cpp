@@ -2,7 +2,7 @@
 
 #include "utils.h"
 
-#define multiplier_leftspeed 0.9
+#define multiplier_leftspeed 0.97
 #define multiplier_rightspeed 1
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();

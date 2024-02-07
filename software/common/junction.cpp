@@ -80,3 +80,21 @@ STATE_result_e JUNC_init_180_loop(bool is_left) {
     return STATE_REPEAT;
 }
 
+STATE_result_e JUNC_complete_180_loop(bool is_left) {
+    LS_data_t ls_out = LS_read();
+
+    if (!ls_out.far_left && ls_out.left && ls_out.right && !ls_out.far_right) {
+        MOT_setspeeds(0, 0);
+        return STATE_EXIT;
+    }
+
+    if (is_left) {
+        MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
+    }
+    else {
+        MOT_setspeeds(TURN_SPEED, -TURN_SPEED);
+    }
+
+    return STATE_REPEAT;
+}
+

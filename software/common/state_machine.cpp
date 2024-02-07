@@ -121,4 +121,16 @@ void STATE_loop() {
             next_state();
         }
     }
+
+    else if (state == NAV_COMPLETE_180_LEFT) {
+        if (JUNC_complete_180_loop(true) != STATE_REPEAT) {
+            next_state();
+        }
+    }
+
+    else if (state == NAV_COMPLETE_180_RIGHT) {
+        if (JUNC_complete_180_loop(false) != STATE_REPEAT) {
+            next_state();
+        }
+    }
 }
