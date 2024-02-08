@@ -3,6 +3,7 @@
 #include "utils.h"
 
 char *states[] = {
+    "NAV_END",
     "NAV_JUNC_FORWARD_LEFT",
     "NAV_JUNC_FORWARD_RIGHT",
     "NAV_JUNC_REVERSE_LEFT",
@@ -130,6 +131,10 @@ static NAV_turns_e route_res2_to_red[] = {
 static bool delivered_res1_block = false;
 static bool delivered_res2_block = false;
 static NAV_turns_e* current_turn_pos = route_start_to_res1;
+
+void NAV_setup_custom_path(NAV_turns_e* state_array_start) {
+    current_turn_pos = state_array_start;
+}
 
 NAV_turns_e NAV_next(STATE_result_e result) {
     switch (result) {

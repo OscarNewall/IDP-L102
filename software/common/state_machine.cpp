@@ -24,7 +24,15 @@ void STATE_loop() {
 // Function to run repeatedly in main loop, executing the list of states in turns_order from navigation.cpp
     STATE_result_e result;
 
-    if (state == NAV_LINE_FOLLOW) {
+    if (state == NAV_END) {
+        // Only log message once
+        if (result != STATE_REPEAT) {
+            MOT_setspeeds(0, 0);
+            UTIL_log(LOG_WARNING, "Reached %s, stopping\n", states[state]);
+            result = STATE_REPEAT;
+        }
+    }
+    else if (state == NAV_LINE_FOLLOW) {
         result = MOVE_line_follow_loop();
     }
     else if (state == NAV_REVERSE_LINE_FOLLOW) {
@@ -94,4 +102,3 @@ void STATE_loop() {
         UTIL_reset_start_time();
         UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
     }
-}

@@ -17,6 +17,7 @@ NAV_JUNC_REVERSE_(LEFT/RIGHT)
 */
 
 typedef enum {
+    NAV_END,
     NAV_JUNC_FORWARD_LEFT,
     NAV_JUNC_FORWARD_RIGHT,
     NAV_JUNC_REVERSE_LEFT,
@@ -40,6 +41,9 @@ typedef enum {
 } NAV_turns_e; // Keep upto date with states in navigation.cpp
 
 extern char* states[];
+
+// 
+void NAV_setup_custom_path(NAV_turns_e* state_array_start);
 
 NAV_turns_e NAV_next(STATE_result_e result);
 
