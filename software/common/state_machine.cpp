@@ -1,3 +1,4 @@
+#include "flipper.h"
 #include "navigation.h"
 #include "state_machine.h"
 #include "line_follow_straight_basic.h"
@@ -96,7 +97,19 @@ void STATE_loop() {
     }
 
     else if (state == NAV_LINE_FOLLOW_FOR_TIME) {
-        if (MOVE_line_follow_for_time(2000) != STATE_REPEAT) {
+        if (MOVE_line_follow_for_time(1500) != STATE_REPEAT) {
+            next_state();
+        }
+    }
+
+    else if (state == NAV_BLOCK_PICKUP) {
+        if (SERV_pick_up_and_detect() != STATE_REPEAT) {
+            next_state();
+        }
+    }
+
+    else if (state == NAV_BLOCK_DROPOFF) {
+        if (SERV_drop_off() != STATE_REPEAT) {
             next_state();
         }
     }
