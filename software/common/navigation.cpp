@@ -130,9 +130,9 @@ static NAV_turns_e route_res2_to_red[] = {
 
 static bool delivered_res1_block = false;
 static bool delivered_res2_block = false;
-static NAV_turns_e* current_turn_pos = route_start_to_res1;
+static const NAV_turns_e* current_turn_pos = route_start_to_res1;
 
-void NAV_setup_custom_path(NAV_turns_e* state_array_start) {
+void NAV_setup_custom_path(const NAV_turns_e* state_array_start) {
     current_turn_pos = state_array_start;
 }
 

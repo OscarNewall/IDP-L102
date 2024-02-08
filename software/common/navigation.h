@@ -42,8 +42,7 @@ typedef enum {
 
 extern char* states[];
 
-// 
-void NAV_setup_custom_path(NAV_turns_e* state_array_start);
+void NAV_setup_custom_path(const NAV_turns_e* state_array_start);
 
 NAV_turns_e NAV_next(STATE_result_e result);
 
