@@ -6,7 +6,7 @@
 #include "utils.h"
 
 #define SERVO_CLOSED_ANGLE 139 /*add fully closed angle here*/
-#define SERVO_OPEN_ANGLE 67 /*add fully open angle here*/
+#define SERVO_OPEN_ANGLE 60 /*add fully open angle here*/
 
 Servo myservo;
 int previous_servo_pos = 100;
@@ -53,16 +53,17 @@ void SERV_turn_to_angle(int target_pos) {
     previous_servo_pos = target_pos;
 }
 
-bool SERV_drop_off() {
+STATE_result_e SERV_drop_off() {
 // State function to drop off block
     SERV_turn_to_angle(SERVO_OPEN_ANGLE);
-    return false;
+    return STATE_EXIT;
 }
 
 // need to change func type here to fit returning enums
 STATE_result_e SERV_pick_up_and_detect() {
 // Moves servo from fully open to fully closed, if limit switch is pressed then returns hard if not returns soft
     SERV_turn_to_angle(SERVO_CLOSED_ANGLE);
+    UTIL_log(LOG_INFO, "Switch pressed: %i\n", switch_pressed);
     if (switch_pressed == false) {
         return STATE_DETECTION_FOAM;
     }
