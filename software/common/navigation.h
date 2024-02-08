@@ -44,6 +44,8 @@ extern char* states[];
 
 void NAV_setup_custom_path(const NAV_turns_e* state_array_start);
 
-NAV_turns_e NAV_next(STATE_result_e result);
+NAV_turns_e NAV_initial_state();
+
+NAV_turns_e NAV_next_state(STATE_result_e result);
 
 #endif

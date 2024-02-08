@@ -13,7 +13,7 @@ STATE_result_e STATE_sleep_loop(unsigned long time_ms) {
 }
 
 void STATE_setup() {
-    state = NAV_next();
+    state = NAV_initial_state();
     UTIL_reset_start_time();
     UTIL_log(LOG_INFO, "Initial state: %s\n", states[state]);
     pinMode(green_led, OUTPUT);
@@ -98,7 +98,8 @@ void STATE_loop() {
     if (result != STATE_REPEAT) {
         digitalWrite(red_led, LOW);
         digitalWrite(green_led, LOW);
-        state = NAV_next(result);
+        state = NAV_next_state(result);
         UTIL_reset_start_time();
         UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
     }
+}

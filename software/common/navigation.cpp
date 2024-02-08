@@ -136,7 +136,11 @@ void NAV_setup_custom_path(const NAV_turns_e* state_array_start) {
     current_turn_pos = state_array_start;
 }
 
-NAV_turns_e NAV_next(STATE_result_e result) {
+NAV_turns_e NAV_initial_state() {
+    return *current_turn_pos;
+}
+
+NAV_turns_e NAV_next_state(STATE_result_e result) {
     switch (result) {
         case STATE_EXIT:
             current_turn_pos++;
