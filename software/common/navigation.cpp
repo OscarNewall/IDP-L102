@@ -15,6 +15,8 @@ char *states[] = {
     "NAV_INIT_180_LEFT",
     "NAV_INIT_180_RIGHT",
     "NAV_LINE_FOLLOW_FOR_TIME",
+    "NAV_BLOCK_PICKUP",
+    "NAV_BLOCK_DROPOFF",
     "NAV_LINE_FOLLOW_TO_BLOCK",
     "NAV_INDICATE_SOLID",
     "NAV_INDICATE_FOAM",
@@ -30,7 +32,7 @@ static NAV_turns_e turns_order[] = {
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW_TO_BLOCK,
+    NAV_LINE_FOLLOW_FOR_TIME,
 };
 
 static NAV_turns_e route_start_to_res1[] = {
