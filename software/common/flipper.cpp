@@ -5,12 +5,13 @@
 #include "state_machine.h"
 #include "utils.h"
 
-#define SERVO_CLOSED_ANGLE 139 /*add fully closed angle here*/
-#define SERVO_OPEN_ANGLE 60 /*add fully open angle here*/
+#define SERVO_CLOSED_ANGLE 135 /*add fully closed angle here*/
+#define SERVO_OPEN_ANGLE 63 /*add fully open angle here*/
+#define SERVO_COMPACT_ANGLE 100 /*default angle for stowing the flipper*/
 
 Servo myservo;
-int previous_servo_pos = 100;
-int servo_pos = 0;
+int previous_servo_pos = SERVO_COMPACT_ANGLE;
+int servo_pos;
 int servo_pin = 8;
 bool switch_pressed = false;
 int crashswitchPin = 2;
@@ -56,10 +57,10 @@ void SERV_turn_to_angle(int target_pos) {
 STATE_result_e SERV_drop_off() {
 // State function to drop off block
     SERV_turn_to_angle(SERVO_OPEN_ANGLE);
+    switch_pressed = false; // In case was made true by drop off action
     return STATE_EXIT;
 }
 
-// need to change func type here to fit returning enums
 STATE_result_e SERV_pick_up_and_detect() {
 // Moves servo from fully open to fully closed, if limit switch is pressed then returns hard if not returns soft
     SERV_turn_to_angle(SERVO_CLOSED_ANGLE);
@@ -72,4 +73,11 @@ STATE_result_e SERV_pick_up_and_detect() {
         switch_pressed == false;
         return STATE_DETECTION_SOLID;
     }
+}
+
+STATE_result_e SERV_stow_flipper() {
+// State function to return flipper to default compact position
+    SERV_turn_to_angle(SERVO_COMPACT_ANGLE);
+    switch_pressed = false; // In case was made true by stowing action
+    return STATE_EXIT;
 }

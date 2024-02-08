@@ -93,9 +93,10 @@ STATE_result_e MOVE_line_follow_to_block_loop() {
         int raw_distance = analogRead(sensorPin);
         temp_total += raw_distance;
     }
-    float ultrasonic_distance = temp_total/samples;
+    ultrasonic_distance = temp_total/samples;
 
     if (ultrasonic_distance < PICKUP_DISTANCE) {
+        MOT_setspeeds(0, 0);
         return STATE_EXIT;
     }
 

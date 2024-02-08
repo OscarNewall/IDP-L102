@@ -113,6 +113,12 @@ void STATE_loop() {
             next_state();
         }
     }
+
+    else if (state == NAV_STOW_FLIPPER) {
+        if (SERV_stow_flipper() != STATE_REPEAT) {
+            next_state();
+        }
+    }
      
     else if (state == NAV_INDICATE_SOLID) {
         MOT_setspeeds(0, 0);
