@@ -130,4 +130,10 @@ void STATE_loop() {
             next_state();
         }
     }
+
+    else if (state == NAV_LINE_FOLLOW_TO_BLOCK) {
+        if (MOVE_line_follow_to_block_loop() != STATE_REPEAT) {
+            next_state();
+        }
+    }
 }

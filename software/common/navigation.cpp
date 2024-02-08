@@ -15,10 +15,11 @@ char *states[] = {
     "NAV_INIT_180_LEFT",
     "NAV_INIT_180_RIGHT",
     "NAV_LINE_FOLLOW_FOR_TIME",
+    "NAV_LINE_FOLLOW_TO_BLOCK",
     "NAV_INDICATE_SOLID",
     "NAV_INDICATE_FOAM",
     "NAV_COMPLETE_180_LEFT",
-    "NAV_COMPLETE_180_RIGHT"
+    "NAV_COMPLETE_180_RIGHT",
 };
 
 static NAV_turns_e turns_order[] = {
@@ -29,7 +30,7 @@ static NAV_turns_e turns_order[] = {
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW_FOR_TIME,
+    NAV_LINE_FOLLOW_TO_BLOCK,
 };
 
 static NAV_turns_e route_start_to_res1[] = {
@@ -39,7 +40,7 @@ static NAV_turns_e route_start_to_res1[] = {
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW_FOR_TIME,
+    NAV_LINE_FOLLOW_TO_BLOCK,
     // Need to add pickup and detection states here
 };
 
@@ -60,7 +61,7 @@ static NAV_turns_e route_res1_to_green_to_res2[] = {
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_TO_BLOCK,
     // Need to add pickup and detection states here
 };
 
@@ -82,7 +83,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_LEFT,
-    NAV_LINE_FOLLOW,
+    NAV_LINE_FOLLOW_TO_BLOCK,
     // Need to add pickup and detection states here
 };
 

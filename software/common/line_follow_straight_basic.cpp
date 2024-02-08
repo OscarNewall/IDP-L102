@@ -80,3 +80,42 @@ STATE_result_e MOVE_line_follow_for_time(int time_ms) {
     return STATE_EXIT;
 }
 
+STATE_result_e MOVE_line_follow_to_block_loop() {
+// Fucntion to line follow until the ultrasonic gives a reading < PICKUP_DISTANCE
+    LS_data_t data = LS_read();
+
+    float ultrasonic_distance;
+    int samples = 5;
+    int temp_total = 0;
+
+    // Get ultrasonic reading averaged over a few samples
+    for (int i = 0; i < samples; i++) {
+        int raw_distance = analogRead(sensorPin);
+        temp_total += raw_distance;
+    }
+    float ultrasonic_distance = temp_total/samples;
+
+    if (ultrasonic_distance < PICKUP_DISTANCE) {
+        return STATE_EXIT;
+    }
+
+    // If reached here then not at block so continue to line follow
+    if (data.far_left == 1 || data.far_right == 1 || (data.left == 0 && data.right == 0))
+    {
+        MOT_setspeeds(0, 0);
+        return STATE_EXIT;
+    }
+    else if (data.left == 1 && data.right == 1)
+    {
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+    }
+    else if (data.left == 1 && data.right == 0)
+    {
+        MOT_setspeeds(LF_CORRECTION_SPEED, FORWARD_SPEED);
+    }
+    else if (data.left == 0 && data.right == 1)
+    {
+        MOT_setspeeds(FORWARD_SPEED, LF_CORRECTION_SPEED);
+    }
+    return STATE_REPEAT;
+}
