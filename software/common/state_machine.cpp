@@ -1,3 +1,4 @@
+#include "flipper.h"
 #include "navigation.h"
 #include "state_machine.h"
 #include "line_follow_straight_basic.h"
@@ -57,7 +58,19 @@ void STATE_loop() {
         result = JUNC_init_180_loop(false);
     }
     else if (state == NAV_LINE_FOLLOW_FOR_TIME) {
-        result = MOVE_line_follow_for_time(2000);
+        result = MOVE_line_follow_for_time(1500);
+    }
+    else if (state == NAV_BLOCK_PICKUP) {
+        result = SERV_pick_up_and_detect();
+    }
+    else if (state == NAV_BLOCK_DROPOFF) {
+        result = SERV_drop_off();
+    }
+    else if (state == NAV_STOW_FLIPPER) {
+        result = SERV_stow_flipper();
+    }
+    else if (state == NAV_LINE_FOLLOW_TO_BLOCK) {
+        result = MOVE_line_follow_to_block_loop();
     }
     else if (state == NAV_INDICATE_SOLID) {
         digitalWrite(red_led, HIGH); // While in this state make sure red led is on and vehicle is stationary
