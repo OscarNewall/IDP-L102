@@ -21,7 +21,7 @@ void STATE_setup() {
 }
 
 void STATE_loop() {
-// Function to run repeatedly in main loop, executing the list of states in turns_order from navigation.cpp
+// Function to run repeatedly in main loop
     STATE_result_e result;
 
     if (state == NAV_END) {

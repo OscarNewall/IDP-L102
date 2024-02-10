@@ -27,7 +27,7 @@ char *states[] = {
 };
 
 static NAV_turns_e turns_order[] = {
-// The array currently used by NAV_next()
+// Currently unused
     NAV_BLIND_FORWARDS,
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
@@ -98,7 +98,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
     NAV_BLOCK_PICKUP,
 };
 
-static NAV_turns_e route_res2_to_green[] = {
+static NAV_turns_e route_res2_to_green_to_finish[] = {
     NAV_INDICATE_FOAM,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_RIGHT,
@@ -112,9 +112,21 @@ static NAV_turns_e route_res2_to_green[] = {
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW_FOR_TIME, // use ultrasonic to end line follow?
     NAV_BLOCK_DROPOFF,
+    NAV_INIT_180_LEFT,
+    NAV_COMPLETE_180_LEFT,
+    NAV_STOW_FLIPPER,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
 };
 
-static NAV_turns_e route_res2_to_red[] = {
+static NAV_turns_e route_res2_to_red_to_finish[] = {
     NAV_INDICATE_SOLID,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_LEFT,
@@ -126,6 +138,16 @@ static NAV_turns_e route_res2_to_red[] = {
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW_FOR_TIME, // use ultrasonic to end line follow?
     NAV_BLOCK_DROPOFF,
+    NAV_INIT_180_RIGHT,
+    NAV_COMPLETE_180_RIGHT,
+    NAV_STOW_FLIPPER,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
 };
 
 static bool delivered_res1_block = false;
@@ -152,7 +174,7 @@ NAV_turns_e NAV_next_state(STATE_result_e result) {
             }
             else {
                 delivered_res2_block = true;
-                current_turn_pos = route_res2_to_green;
+                current_turn_pos = route_res2_to_green_to_finish;
             }
             break;
         case STATE_DETECTION_SOLID:
@@ -162,7 +184,7 @@ NAV_turns_e NAV_next_state(STATE_result_e result) {
             }
             else {
                 delivered_res2_block = true;
-                current_turn_pos = route_res2_to_red;
+                current_turn_pos = route_res2_to_red_to_finish;
             }
             break;
         default:
