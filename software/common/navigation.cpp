@@ -124,6 +124,7 @@ static NAV_turns_e route_res2_to_green_to_finish[] = {
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
+    NAV_END,
 };
 
 static NAV_turns_e route_res2_to_red_to_finish[] = {
@@ -148,6 +149,7 @@ static NAV_turns_e route_res2_to_red_to_finish[] = {
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
+    NAV_END
 };
 
 static bool delivered_res1_block = false;
