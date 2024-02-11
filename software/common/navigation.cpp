@@ -157,6 +157,8 @@ static bool delivered_res2_block = false;
 static const NAV_turns_e* current_turn_pos = route_start_to_res1;
 
 void NAV_setup_custom_path(const NAV_turns_e* state_array_start) {
+    delivered_res1_block = true;
+    delivered_res2_block = true;
     current_turn_pos = state_array_start;
 }
 
@@ -174,9 +176,13 @@ NAV_turns_e NAV_next_state(STATE_result_e result) {
                 delivered_res1_block = true;
                 current_turn_pos = route_res1_to_green_to_res2;
             }
-            else {
+            else if (!delivered_res2_block) {
                 delivered_res2_block = true;
                 current_turn_pos = route_res2_to_green_to_finish;
+            }
+            else { 
+                // Avoid changing route on custom path
+                current_turn_pos++;
             }
             break;
         case STATE_DETECTION_SOLID:
@@ -184,9 +190,13 @@ NAV_turns_e NAV_next_state(STATE_result_e result) {
                 delivered_res1_block = true;
                 current_turn_pos = route_res1_to_red_to_res2;
             }
-            else {
+            else if (!delivered_res2_block) {
                 delivered_res2_block = true;
                 current_turn_pos = route_res2_to_red_to_finish;
+            }
+            else {
+                // Avoid changing route on custom path
+                current_turn_pos++;
             }
             break;
         default:
