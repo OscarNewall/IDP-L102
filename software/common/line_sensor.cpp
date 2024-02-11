@@ -6,6 +6,12 @@
 
 #include "utils.h"
 
+#define ULTRASONIC_PIN_NO A0
+#define ULTRASONIC_READINGS_COUNT 5
+#define ULTRASONIC_MAX_RANG (520) // the max measurement value of the module is 520cm(a little bit longer than effective max range)
+#define ULTRASONIC_ADC_SOLUTION (1023) //ADC accuracy of Arduino UNO is 10bit
+
+
 static LS_data_t prev_data;
 
 void LS_setup() {
@@ -83,10 +89,12 @@ int SENSE_read_tof() {
     return static_cast<int>(distance_reading);
 }
 
-void SENSE_setup_ultrasonic() {
-    UTIL_error("Ultrasonic not yet implemented\n");
-}
+int SENSE_read_ultrasonic() {
+    int total = 0;
 
-float SENSE_read_ultrasonic() {
-    UTIL_error("Ultrasonic not yet implemented\n");
+    for (int i = 0; i < ULTRASONIC_READINGS_COUNT; i++) {
+        int raw_distance = analogRead(ULTRASONIC_PIN_NO);
+        total += raw_distance;
+    }
+    return (total * ULTRASONIC_MAX_RANG) / (ULTRASONIC_ADC_SOLUTION * ULTRASONIC_READINGS_COUNT);
 }

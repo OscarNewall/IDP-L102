@@ -30,10 +30,10 @@ LS_data_t LS_get_data();
 
 void SENSE_setup_tof();
 
+// Returns distance in cm
 int SENSE_read_tof();
 
-void SENSE_setup_ultrasonic();
-
-float SENSE_read_ultrasonic();
+// Returns distance in cm
+int SENSE_read_ultrasonic();
 
 #endif
