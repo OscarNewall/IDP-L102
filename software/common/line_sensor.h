@@ -28,4 +28,12 @@ void LS_new_read();
 // Averages readings in buffer and returns result
 LS_data_t LS_get_data();
 
+void SENSE_setup_tof();
+
+int SENSE_read_tof();
+
+void SENSE_setup_ultrasonic();
+
+float SENSE_read_ultrasonic();
+
 #endif

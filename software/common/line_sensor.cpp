@@ -1,5 +1,9 @@
 #include "line_sensor.h"
 
+#include <Arduino.h>
+#include <Wire.h>
+#include <DFRobot_VL53L0X.h>
+
 #include "utils.h"
 
 static LS_data_t prev_data;
@@ -63,4 +67,26 @@ LS_data_t LS_get_data() {
     output.right = right > (BUF_SIZE / 2);
     output.far_right = far_right > (BUF_SIZE / 2);
     return output;
+}
+
+static DFRobot_VL53L0X tof_sensor;
+
+void SENSE_setup_tof() {
+    Wire.begin();
+    tof_sensor.begin(0x50);
+    tof_sensor.setMode(tof_sensor.eContinuous, tof_sensor.eLow);
+    tof_sensor.start();
+}
+
+int SENSE_read_tof() {
+    float distance_reading = tof_sensor.getDistance();
+    return static_cast<int>(distance_reading);
+}
+
+void SENSE_setup_ultrasonic() {
+    UTIL_error("Ultrasonic not yet implemented\n");
+}
+
+float SENSE_read_ultrasonic() {
+    UTIL_error("Ultrasonic not yet implemented\n");
 }
