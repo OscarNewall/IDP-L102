@@ -1,5 +1,10 @@
 #include "motor.h"
 
+#include "utils.h"
+
+#define multiplier_leftspeed 1
+#define multiplier_rightspeed 1
+
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
 Adafruit_DCMotor* leftmotor = AFMS.getMotor(1);
@@ -16,14 +21,12 @@ void MOT_initialise() {
     pinMode(blue_led, OUTPUT);
 
     if (!AFMS.begin()) {
-        Serial.println("Could not find left Motor Shield. Check wiring.");
-        while (1);
+        UTIL_error("Could not find left Motor Shield. Check wiring.\n");
     }
     if (!AFMS.begin()) {
-        Serial.println("Could not find right Motor Shield. Check wiring.");
-        while (1);
+        UTIL_error("Could not find left Motor Shield. Check wiring.\n");
     }
-    Serial.println("Both Motor Shields found.");
+    UTIL_log(LOG_INFO, "Both Motor Shields found.\n");
 
     leftmotor->run(RELEASE);
     rightmotor->run(RELEASE);
@@ -34,7 +37,7 @@ void MOT_initialise() {
 // is_moving false if speeds are 0,0
 // Otherwise true
 void MOT_setspeeds(int leftspeed, int rightspeed) {
-    if (leftspeed == 0 and rightspeed ==0) {
+    if (leftspeed == 0 and rightspeed == 0) {
         is_moving = false;
     }
     else {
@@ -42,19 +45,19 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
     }
     if ((last_leftspeed != leftspeed) or (last_rightspeed != rightspeed)) {
         if (leftspeed < 0) {
-            leftmotor->run(BACKWARD);
-        }
-        else {
             leftmotor->run(FORWARD);
         }
-        if (rightspeed < 0) {
-            rightmotor->run(BACKWARD);
-        }
         else {
+            leftmotor->run(BACKWARD);
+        }
+        if (rightspeed < 0) {
             rightmotor->run(FORWARD);
         }
-	    leftmotor->setSpeed(abs(leftspeed));
-	    rightmotor->setSpeed(abs(rightspeed));
+        else {
+            rightmotor->run(BACKWARD);
+        }
+	    leftmotor->setSpeed(abs(leftspeed) * multiplier_leftspeed);
+	    rightmotor->setSpeed(abs(rightspeed) * multiplier_rightspeed);
         last_leftspeed = leftspeed;
         last_rightspeed = rightspeed;
     }
@@ -67,6 +70,6 @@ void LED_flashblue() {
     }
     else {
         // If moving, toggle led
-        digitalWrite (blue_led, !digitalRead (blue_led));
+        digitalWrite(blue_led, !digitalRead (blue_led));
     }
 }

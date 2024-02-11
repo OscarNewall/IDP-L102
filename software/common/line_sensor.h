@@ -5,11 +5,11 @@
 #include <Arduino.h>
 
 // pin definitions
-#define far_left_line_pin 10
-#define left_line_pin 11
+#define far_left_line_pin 13
+#define left_line_pin 12
 
-#define right_line_pin 12
-#define far_right_line_pin 13
+#define right_line_pin 11
+#define far_right_line_pin 10
 
 typedef struct {
     bool left;
@@ -21,5 +21,11 @@ typedef struct {
 void LS_setup();
 
 LS_data_t LS_read();
+
+// Makes new reading and stores in buffer
+void LS_new_read();
+
+// Averages readings in buffer and returns result
+LS_data_t LS_get_data();
 
 #endif

@@ -12,6 +12,6 @@ void setup() {
 }
 
 void loop() {
-  straight_basic(255, 150);
+  MOVE_line_follow_loop();
   bluetimer.update();
 }
