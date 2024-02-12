@@ -8,7 +8,7 @@
 
 #define FORWARD_SPEED 255
 #define LF_CORRECTION_SPEED 127
-#define PICKUP_DISTANCE 10.0
+#define PICKUP_DISTANCE 150
 #define sensorPin A0
 
 

@@ -8,7 +8,7 @@
 
 #define ULTRASONIC_PIN_NO A0
 #define ULTRASONIC_READINGS_COUNT 5
-#define ULTRASONIC_MAX_RANG (520) // the max measurement value of the module is 520cm(a little bit longer than effective max range)
+#define ULTRASONIC_MAX_RANG (5200) // the max measurement value of the module is 5200mm(a little bit longer than effective max range)
 #define ULTRASONIC_ADC_SOLUTION (1023) //ADC accuracy of Arduino UNO is 10bit
 
 

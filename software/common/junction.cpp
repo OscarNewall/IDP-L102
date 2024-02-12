@@ -7,8 +7,8 @@
 #include "line_follow_straight_basic.h"
 #include "utils.h"
 
-#define FORWARD_TIME_MS 350
-#define SHORT_FORWARD_TIME_MS 250 // For turns where the junction has been reversed into, so shorter step forward needed
+#define FORWARD_TIME_MS 250
+#define SHORT_FORWARD_TIME_MS 50 // For turns where the junction has been reversed into, so shorter step forward needed
 #define TURN_SPEED 200
 #define PARTIAL_TURN_TIME_MS 800  // Time for a ~60 degree turn
 
@@ -30,7 +30,10 @@ STATE_result_e JUNC_turn_loop(bool is_left, bool short_forward_step) {
     */
     LS_data_t ls_out = LS_read();
 
-    const unsigned long forward_time = short_forward_step ? SHORT_FORWARD_TIME_MS : FORWARD_TIME_MS;
+    unsigned long forward_time = short_forward_step ? SHORT_FORWARD_TIME_MS : FORWARD_TIME_MS;
+    if (!is_left && short_forward_step) {
+        forward_time = (forward_time* 6) / 2;
+    }
 
     if (!UTIL_reached_timeout(forward_time)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
@@ -43,6 +46,7 @@ STATE_result_e JUNC_turn_loop(bool is_left, bool short_forward_step) {
         bool far_outside_off =  (is_left ? !ls_out.far_right : !ls_out.far_left);
         if (ls_out.left && ls_out.right && far_outside_off) {
             MOT_setspeeds(0, 0);
+            UTIL_log(LOG_DEBUG, "JUNC forward time: %lums\n", forward_time);
             return STATE_EXIT;
         }
     }
@@ -61,7 +65,7 @@ STATE_result_e JUNC_init_180_loop(bool is_left) {
     LS_data_t ls_out = LS_read();
 
     // Blind reversing a little
-    if (!UTIL_reached_timeout(FORWARD_TIME_MS*2)) {
+    if (!UTIL_reached_timeout(FORWARD_TIME_MS*4)) {
             MOT_setspeeds(-FORWARD_SPEED, -FORWARD_SPEED);
             return STATE_REPEAT;
         }

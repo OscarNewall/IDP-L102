@@ -5,8 +5,8 @@
 #include "state_machine.h"
 #include "utils.h"
 
-#define SERVO_CLOSED_ANGLE 135 /*add fully closed angle here*/
-#define SERVO_OPEN_ANGLE 63 /*add fully open angle here*/
+#define SERVO_CLOSED_ANGLE 120 /*add fully closed angle here*/
+#define SERVO_OPEN_ANGLE 60 /*add fully open angle here*/
 #define SERVO_COMPACT_ANGLE 100 /*default angle for stowing the flipper*/
 
 Servo myservo;

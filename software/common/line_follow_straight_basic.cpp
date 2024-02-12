@@ -85,6 +85,7 @@ STATE_result_e MOVE_line_follow_to_block_loop() {
     LS_data_t data = LS_read();
 
     int distance = SENSE_read_tof();
+    UTIL_log(LOG_DEBUG, "Distance measured: %dcm\n", distance);
 
     if (distance < PICKUP_DISTANCE) {
         MOT_setspeeds(0, 0);
