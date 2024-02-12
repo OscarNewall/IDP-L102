@@ -34,6 +34,9 @@ STATE_result_e JUNC_turn_loop(bool is_left, bool short_forward_step) {
     if (!is_left && short_forward_step) {
         forward_time = (forward_time* 6) / 2;
     }
+    if (STATE_is_new_state()) {
+        UTIL_log(LOG_DEBUG, "JUNC forward time: %lums\n", forward_time);
+    }
 
     if (!UTIL_reached_timeout(forward_time)) {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
@@ -46,7 +49,6 @@ STATE_result_e JUNC_turn_loop(bool is_left, bool short_forward_step) {
         bool far_outside_off =  (is_left ? !ls_out.far_right : !ls_out.far_left);
         if (ls_out.left && ls_out.right && far_outside_off) {
             MOT_setspeeds(0, 0);
-            UTIL_log(LOG_DEBUG, "JUNC forward time: %lums\n", forward_time);
             return STATE_EXIT;
         }
     }
