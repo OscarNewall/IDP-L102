@@ -15,11 +15,11 @@ STATE_result_e MOVE_line_follow_loop() {
             return STATE_EXIT;
         }
     }
-    else if (data.far_left) {
+    if (data.far_left) {
         MOT_setspeeds(0, FORWARD_SPEED);
     }
     else if (data.far_right) {
-        MOT_setspeeds(FORWARD_SPEED, 0)
+        MOT_setspeeds(FORWARD_SPEED, 0);
     }
     else if (data.left == 1 && data.right == 1)
     {
