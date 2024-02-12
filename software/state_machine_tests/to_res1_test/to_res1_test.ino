@@ -24,6 +24,7 @@ void setup() {
     Serial.begin(9600);
     NAV_setup_custom_path(turns_order);
     LS_setup();
+    SENSE_setup_tof();
     MOT_initialise();
     SERV_initialise();
     bluetimer.start();
@@ -47,7 +48,7 @@ void loop() {
 
     bluetimer.update(); // Run the movement LED for #safety :)
     STATE_loop(); // Enact the list of states
-
+    // Serial.println(SENSE_read_tof());
     /*
     Use below code for seeing line sensor output
     LS_data_t data = LS_read();
