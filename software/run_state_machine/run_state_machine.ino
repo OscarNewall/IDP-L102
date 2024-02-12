@@ -10,6 +10,7 @@ Ticker bluetimer(LED_flashblue, 500, 0, MILLIS);
 void setup() {
     Serial.begin(9600);
     LS_setup();
+    SENSE_setup_tof();
     MOT_initialise();
     SERV_initialise();
     bluetimer.start();

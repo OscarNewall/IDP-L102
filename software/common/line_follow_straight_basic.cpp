@@ -84,18 +84,9 @@ STATE_result_e MOVE_line_follow_to_block_loop() {
 // Fucntion to line follow until the ultrasonic gives a reading < PICKUP_DISTANCE
     LS_data_t data = LS_read();
 
-    float ultrasonic_distance;
-    int samples = 5;
-    int temp_total = 0;
+    int distance = SENSE_read_tof();
 
-    // Get ultrasonic reading averaged over a few samples
-    for (int i = 0; i < samples; i++) {
-        int raw_distance = analogRead(sensorPin);
-        temp_total += raw_distance;
-    }
-    ultrasonic_distance = temp_total/samples;
-
-    if (ultrasonic_distance < PICKUP_DISTANCE) {
+    if (distance < PICKUP_DISTANCE) {
         MOT_setspeeds(0, 0);
         return STATE_EXIT;
     }

@@ -1,6 +1,16 @@
 #include "line_sensor.h"
 
+#include <Arduino.h>
+#include <Wire.h>
+#include <DFRobot_VL53L0X.h>
+
 #include "utils.h"
+
+#define ULTRASONIC_PIN_NO A0
+#define ULTRASONIC_READINGS_COUNT 5
+#define ULTRASONIC_MAX_RANG (520) // the max measurement value of the module is 520cm(a little bit longer than effective max range)
+#define ULTRASONIC_ADC_SOLUTION (1023) //ADC accuracy of Arduino UNO is 10bit
+
 
 static LS_data_t prev_data;
 
@@ -63,4 +73,28 @@ LS_data_t LS_get_data() {
     output.right = right > (BUF_SIZE / 2);
     output.far_right = far_right > (BUF_SIZE / 2);
     return output;
+}
+
+static DFRobot_VL53L0X tof_sensor;
+
+void SENSE_setup_tof() {
+    Wire.begin();
+    tof_sensor.begin(0x50);
+    tof_sensor.setMode(tof_sensor.eContinuous, tof_sensor.eLow);
+    tof_sensor.start();
+}
+
+int SENSE_read_tof() {
+    float distance_reading = tof_sensor.getDistance();
+    return static_cast<int>(distance_reading);
+}
+
+int SENSE_read_ultrasonic() {
+    int total = 0;
+
+    for (int i = 0; i < ULTRASONIC_READINGS_COUNT; i++) {
+        int raw_distance = analogRead(ULTRASONIC_PIN_NO);
+        total += raw_distance;
+    }
+    return (total * ULTRASONIC_MAX_RANG) / (ULTRASONIC_ADC_SOLUTION * ULTRASONIC_READINGS_COUNT);
 }
