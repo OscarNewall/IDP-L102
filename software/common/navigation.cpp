@@ -9,6 +9,7 @@ char *states[] = {
     "NAV_JUNC_REVERSE_LEFT",
     "NAV_JUNC_REVERSE_RIGHT",
     "NAV_JUNC_PASS",
+    "NAV_JUNC_CONFIRM",
     "NAV_BLIND_FORWARDS",
     "NAV_LINE_FOLLOW",
     "NAV_SLEEP",

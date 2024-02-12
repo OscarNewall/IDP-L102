@@ -11,6 +11,7 @@
 #define SHORT_FORWARD_TIME_MS 50 // For turns where the junction has been reversed into, so shorter step forward needed
 #define TURN_SPEED 200
 #define PARTIAL_TURN_TIME_MS 800  // Time for a ~60 degree turn
+#define CONFIRM_TURN_NUDGE_MS 100
 
 STATE_result_e JUNC_pass_loop() {
     if (!UTIL_reached_timeout(FORWARD_TIME_MS)) {
@@ -107,3 +108,24 @@ STATE_result_e JUNC_complete_180_loop(bool is_left) {
     return STATE_REPEAT;
 }
 
+STATE_result_e JUNC_confirm_turn_loop() {
+    if (!UTIL_reached_timeout(CONFIRM_TURN_NUDGE_MS)) {
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+        return STATE_REPEAT;
+    }
+
+    LS_data_t ls_out = LS_read();
+
+    if (ls_out.left && ls_out.right) {
+        MOT_setspeeds(0, 0);
+        return STATE_EXIT;
+    }
+    else if (ls_out.left) {
+        MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
+        return STATE_REPEAT;
+    }
+    else if (ls_out.right) {
+        MOT_setspeeds(TURN_SPEED, -TURN_SPEED);
+        return STATE_REPEAT;
+    }
+}

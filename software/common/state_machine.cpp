@@ -63,6 +63,9 @@ void STATE_loop() {
     else if (state == NAV_JUNC_PASS) {
         result = JUNC_pass_loop();
     }
+    else if (state == NAV_JUNC_CONFIRM) {
+        result = JUNC_confirm_turn_loop();
+    }
     else if (state == NAV_SLEEP) {
         result = STATE_sleep_loop(1000);
     }
