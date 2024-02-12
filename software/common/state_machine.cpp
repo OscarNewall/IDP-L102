@@ -12,9 +12,16 @@ STATE_result_e STATE_sleep_loop(unsigned long time_ms) {
     return UTIL_reached_timeout(time_ms) ? STATE_EXIT : STATE_REPEAT;
 }
 
+static bool is_new_state;
+
+bool STATE_is_new_state() {
+    return is_new_state;
+}
+
 void STATE_setup() {
     state = NAV_initial_state();
     UTIL_reset_start_time();
+    is_new_state = true;
     UTIL_log(LOG_INFO, "Initial state: %s\n", states[state]);
     pinMode(green_led, OUTPUT);
     pinMode(red_led, OUTPUT);
@@ -95,10 +102,12 @@ void STATE_loop() {
         result = JUNC_complete_180_loop(false);
     }
 
+    is_new_state = false;
     if (result != STATE_REPEAT) {
         digitalWrite(red_led, LOW);
         digitalWrite(green_led, LOW);
         state = NAV_next_state(result);
+        is_new_state = true;
         UTIL_reset_start_time();
         UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
     }
