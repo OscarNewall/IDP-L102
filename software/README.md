@@ -6,6 +6,7 @@ Required Arduino libraries:
 - Servo by Michael Margolis, Arduino Version 1.2.1
 - Adafruit Motor Shield V2 Library by Adafruit Version 1.1.3
 - Ticker by Stefan Staub Version 4.4.0
+- DFRobot_VL53L0X by DFRobot Version 1.0.0
 
 Install libraries using the Arduino IDE, under Tools -> Manage Libraries...
 
