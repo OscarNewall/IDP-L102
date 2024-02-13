@@ -44,6 +44,7 @@ void MOT_setspeeds(int leftspeed, int rightspeed) {
         is_moving = true;
     }
     if ((last_leftspeed != leftspeed) or (last_rightspeed != rightspeed)) {
+        UTIL_log(LOG_DEBUG, "Setting motors: %d, %d\n", leftspeed, rightspeed);
         if (leftspeed < 0) {
             leftmotor->run(FORWARD);
         }
