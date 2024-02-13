@@ -76,7 +76,7 @@ void STATE_loop() {
         result = JUNC_init_180_loop(false);
     }
     else if (state == NAV_LINE_FOLLOW_FOR_TIME) {
-        result = MOVE_line_follow_for_time(1500);
+        result = MOVE_line_follow_for_time(3000);
     }
     else if (state == NAV_BLOCK_PICKUP) {
         result = SERV_pick_up_and_detect();
