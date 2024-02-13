@@ -8,9 +8,9 @@
 #include "utils.h"
 
 #define FORWARD_TIME_MS 225
-#define SHORT_FORWARD_TIME_MS 175 // For turns where the junction has been reversed into, so shorter step forward needed
+#define SHORT_FORWARD_TIME_MS 205 // For turns where the junction has been reversed into, so shorter step forward needed
 #define TURN_SPEED 200
-#define PARTIAL_TURN_TIME_MS 800  // Time for a ~60 degree turn
+#define PARTIAL_TURN_TIME_MS 950  // Time for a ~60 degree turn
 #define CONFIRM_TURN_NUDGE_MS 100
 
 STATE_result_e JUNC_pass_loop() {
@@ -68,7 +68,7 @@ STATE_result_e JUNC_init_180_loop(bool is_left) {
     LS_data_t ls_out = LS_read();
 
     // Blind reversing a little
-    if (!UTIL_reached_timeout(FORWARD_TIME_MS*3)) {
+    if (!UTIL_reached_timeout(FORWARD_TIME_MS*2.5)) {
             MOT_setspeeds(-FORWARD_SPEED, -FORWARD_SPEED);
             return STATE_REPEAT;
         }
@@ -84,7 +84,7 @@ STATE_result_e JUNC_init_180_loop(bool is_left) {
         MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
     }
     else {
-        MOT_setspeeds(TURN_SPEED, -TURN_SPEED);
+        MOT_setspeeds(TURN_SPEED*0.9, -TURN_SPEED);
     }
 
     return STATE_REPEAT;
@@ -102,7 +102,7 @@ STATE_result_e JUNC_complete_180_loop(bool is_left) {
         MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
     }
     else {
-        MOT_setspeeds(TURN_SPEED, -TURN_SPEED);
+        MOT_setspeeds(TURN_SPEED*0.9, -TURN_SPEED);
     }
 
     return STATE_REPEAT;
@@ -121,11 +121,11 @@ STATE_result_e JUNC_confirm_turn_loop() {
         return STATE_EXIT;
     }
     else if (ls_out.left) {
-        MOT_setspeeds(-TURN_SPEED, TURN_SPEED);
+        MOT_setspeeds(-TURN_SPEED, TURN_SPEED*1.1);
         return STATE_REPEAT;
     }
     else if (ls_out.right) {
-        MOT_setspeeds(TURN_SPEED, -TURN_SPEED);
+        MOT_setspeeds(TURN_SPEED, -TURN_SPEED*1.1);
         return STATE_REPEAT;
     }
 }

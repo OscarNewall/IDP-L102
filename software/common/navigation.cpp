@@ -86,6 +86,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_RIGHT,
     NAV_JUNC_CONFIRM,
+    NAV_JUNC_CONFIRM,
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
@@ -96,6 +97,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
     NAV_INIT_180_RIGHT,
     NAV_STOW_FLIPPER,
     NAV_COMPLETE_180_RIGHT,
+    NAV_JUNC_CONFIRM,
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
@@ -132,6 +134,8 @@ static NAV_turns_e route_res2_to_green_to_finish[] = {
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
+    NAV_JUNC_PASS,
+    NAV_JUNC_PASS,
     NAV_END,
 };
 
@@ -156,6 +160,8 @@ static NAV_turns_e route_res2_to_red_to_finish[] = {
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
+    NAV_JUNC_PASS,
+    NAV_JUNC_PASS,
     NAV_END
 };
 
