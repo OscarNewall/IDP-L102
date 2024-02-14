@@ -16,7 +16,8 @@ char *states[] = {
     "NAV_REVERSE_LINE_FOLLOW",
     "NAV_INIT_180_LEFT",
     "NAV_INIT_180_RIGHT",
-    "NAV_LINE_FOLLOW_FOR_TIME",
+    "NAV_LINE_FOLLOW_FOR_TIME"
+    "NAV_LINE_FOLLOW_INTO_INDUSTRIAL",
     "NAV_BLOCK_PICKUP",
     "NAV_BLOCK_DROPOFF",
     "NAV_STOW_FLIPPER",
@@ -25,6 +26,8 @@ char *states[] = {
     "NAV_INDICATE_FOAM",
     "NAV_COMPLETE_180_LEFT",
     "NAV_COMPLETE_180_RIGHT",
+    "NAV_TURN_90_LEFT",
+    "NAV_BLIND_REVERSE"
 };
 
 static NAV_turns_e turns_order[] = {
@@ -109,7 +112,7 @@ static NAV_turns_e route_res1_to_red_to_res2[] = {
     NAV_BLOCK_PICKUP,
 };
 
-static NAV_turns_e route_res2_to_green_to_finish[] = {
+static NAV_turns_e route_res2_to_green_to_ind1[] = {
     NAV_INDICATE_FOAM,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_RIGHT,
@@ -126,20 +129,19 @@ static NAV_turns_e route_res2_to_green_to_finish[] = {
     NAV_STOW_FLIPPER,
     NAV_COMPLETE_180_LEFT,
     NAV_LINE_FOLLOW,
-    NAV_JUNC_FORWARD_RIGHT,
-    NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
     NAV_LINE_FOLLOW,
-    NAV_JUNC_PASS,
-    NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
-    NAV_JUNC_PASS,
-    NAV_JUNC_PASS,
-    NAV_END,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW_INTO_INDUSTRIAL,
+    NAV_TURN_90_LEFT,
+    NAV_LINE_FOLLOW_TO_BLOCK,
+    NAV_BLOCK_PICKUP
+
 };
 
-static NAV_turns_e route_res2_to_red_to_finish[] = {
+static NAV_turns_e route_res2_to_red_to_ind1[] = {
     NAV_INDICATE_SOLID,
     NAV_REVERSE_LINE_FOLLOW,
     NAV_JUNC_REVERSE_LEFT,
@@ -154,6 +156,67 @@ static NAV_turns_e route_res2_to_red_to_finish[] = {
     NAV_STOW_FLIPPER,
     NAV_COMPLETE_180_RIGHT,
     NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW_INTO_INDUSTRIAL,
+    NAV_TURN_90_LEFT,
+    NAV_LINE_FOLLOW_TO_BLOCK,
+    NAV_BLOCK_PICKUP
+};
+
+static NAV_turns_e route_ind1_to_green_to_finish[] = {
+    NAV_BLIND_REVERSE,
+    NAV_JUNC_REVERSE_LEFT,
+    NAV_JUNC_CONFIRM,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW_FOR_TIME,
+    NAV_BLOCK_DROPOFF,
+    NAV_INIT_180_RIGHT,
+    NAV_STOW_FLIPPER,
+    NAV_COMPLETE_180_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_JUNC_PASS, // second JUNC_PASS used to move further into box
+    NAV_JUNC_PASS,
+    NAV_JUNC_PASS,
+    NAV_END
+};
+
+static NAV_turns_e route_ind1_to_red_to_finish[] = {
+    NAV_BLIND_REVERSE,
+    NAV_JUNC_REVERSE_LEFT,
+    NAV_JUNC_CONFIRM,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_LEFT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_FORWARD_RIGHT,
+    NAV_LINE_FOLLOW,
+    NAV_JUNC_PASS,
+    NAV_LINE_FOLLOW_FOR_TIME,
+    NAV_BLOCK_DROPOFF,
+    NAV_INIT_180_RIGHT,
+    NAV_STOW_FLIPPER,
+    NAV_COMPLETE_180_RIGHT,
+    NAV_JUNC_CONFIRM,
+    NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_LEFT,
@@ -163,15 +226,17 @@ static NAV_turns_e route_res2_to_red_to_finish[] = {
     NAV_JUNC_PASS,
     NAV_JUNC_PASS,
     NAV_END
-};
+}
 
 static bool delivered_res1_block = false;
 static bool delivered_res2_block = false;
+static bool delivered_ind1_block = false;
 static const NAV_turns_e* current_turn_pos = route_start_to_res1;
 
 void NAV_setup_custom_path(const NAV_turns_e* state_array_start) {
     delivered_res1_block = true;
     delivered_res2_block = true;
+    delivered_ind1_block = true;
     current_turn_pos = state_array_start;
 }
 
@@ -191,7 +256,11 @@ NAV_turns_e NAV_next_state(STATE_result_e result) {
             }
             else if (!delivered_res2_block) {
                 delivered_res2_block = true;
-                current_turn_pos = route_res2_to_green_to_finish;
+                current_turn_pos = route_res2_to_green_to_ind1;
+            }
+            else if (!delivered_ind1_block) {
+                delivered_ind1_block = true;
+                current_turn_pos = route_ind1_to_green_to_finish;
             }
             else { 
                 // Avoid changing route on custom path
@@ -205,7 +274,11 @@ NAV_turns_e NAV_next_state(STATE_result_e result) {
             }
             else if (!delivered_res2_block) {
                 delivered_res2_block = true;
-                current_turn_pos = route_res2_to_red_to_finish;
+                current_turn_pos = route_res2_to_red_to_ind1;
+            }
+            else if (!delivered_ind1_block) {
+                delivered_ind1_block = true;
+                current_turn_pos = route_ind1_to_red_to_finish;
             }
             else {
                 // Avoid changing route on custom path
