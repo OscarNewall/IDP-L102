@@ -3,9 +3,10 @@
 #include <Arduino.h>
 
 #include "state_machine.h"
+#include "motor.h"
 #include "utils.h"
 
-#define SERVO_CLOSED_ANGLE 120 /*add fully closed angle here*/
+#define SERVO_CLOSED_ANGLE 116 /*add fully closed angle here*/
 #define SERVO_OPEN_ANGLE 60 /*add fully open angle here*/
 #define SERVO_COMPACT_ANGLE 100 /*default angle for stowing the flipper*/
 
@@ -56,6 +57,7 @@ void SERV_turn_to_angle(int target_pos) {
 
 STATE_result_e SERV_drop_off() {
 // State function to drop off block
+    MOT_setspeeds(0, 0);
     SERV_turn_to_angle(SERVO_OPEN_ANGLE);
     switch_pressed = false; // In case was made true by drop off action
     return STATE_EXIT;

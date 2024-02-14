@@ -14,6 +14,9 @@ typedef enum {
 
 STATE_result_e STATE_sleep_loop();
 
+// True for first loop in new state
+bool STATE_is_new_state();
+
 void STATE_setup();
 
 void STATE_loop();
