@@ -226,7 +226,7 @@ static NAV_turns_e route_ind1_to_red_to_finish[] = {
     NAV_JUNC_PASS,
     NAV_JUNC_PASS,
     NAV_END
-}
+};
 
 static bool delivered_res1_block = false;
 static bool delivered_res2_block = false;

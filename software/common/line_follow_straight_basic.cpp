@@ -28,6 +28,7 @@ STATE_result_e MOVE_line_follow_loop() {
     else if (data.left == 0 && data.right == 1)
     {
         MOT_setspeeds(FORWARD_SPEED, LF_CORRECTION_SPEED);
+    }
     else 
     {
         MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);

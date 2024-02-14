@@ -14,7 +14,7 @@
 
 STATE_result_e MOVE_line_follow_loop();
 
-STATE_result_e MOVE_blind_forward_loop();
+STATE_result_e MOVE_blind_forward_loop(bool is_forward);
 
 STATE_result_e MOVE_reverse_line_follow_loop();
 
