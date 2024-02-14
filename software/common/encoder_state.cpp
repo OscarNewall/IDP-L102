@@ -1,4 +1,4 @@
-#include "encoder.h"
+#include "encoder_state.h"
 
 #define step 1
 #define interval 20
@@ -49,29 +49,43 @@ void correct_speed() {
     MOT_setspeeds(left_speed * left_direction, right_speed * right_direction);
 }
 
-void equal_drive(int count, int left_direction_arg = 1, int right_direction_arg = 1) {
+void encoder_initialise() {
+    Ticker tickerObject(correct_speed, interval, 0, MILLIS);
+    tickerObject.start();
+}
+
+void encoder_reset() {
     offset = 0;
     left_count = 0;
     right_count = 0;
-    Ticker tickerObject(correct_speed, interval, 0, MILLIS);
-    tickerObject.start();
-    while (left_count < count || right_count < count) {
+}
+
+void encoder_forward() {
+    left_direction = 1;
+    right_direction = 1;
+}
+
+void encoder_backward() {
+    left_direction = -1;
+    right_direction = -1;
+}
+
+void encoder_left() {
+    left_direction = -1;
+    right_direction = 1;
+}
+
+void encoder_right() {
+    left_direction = 1;
+    right_direction = -1;
+}
+
+bool encoder_reached_count(unsigned int count) {
+    if (left_count < count || right_count < count) {
         tickerObject.update();
+        return false;
     }
-}
-
-void equal_forward(int count) {
-    equal_drive(count, 1, 1);
-}
-
-void equal_backward(int count) {
-    equal_drive(count, -1, -1);
-}
-
-void equal_left(int count) {
-    equal_drive(count, -1, 1);
-}
-
-void equal_right(int count) {
-    equal_drive(count, 1, -1);
+    MOT_setspeeds(0, 0)
+    encoder_reset();
+    return true;
 }

@@ -1,5 +1,5 @@
-#ifndef encoder_h
-#define encoder_h
+#ifndef encoder_primitive_h
+#define encoder_primitive_h
 
 #include <Arduino.h>
 #include <Ticker.h>
