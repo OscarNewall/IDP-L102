@@ -143,6 +143,11 @@ STATE_result_e JUNC_turn_90(bool is_left) {
         return STATE_REPEAT;
     }
 
+    if (UTIL_reached_timeout(1500 + 500)) {
+        // Go forward a bit after the blind turn
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+    }
+
     if (ls_out.far_left && ls_out.far_right) {
         MOT_setspeeds(0, 0);
         return STATE_EXIT;

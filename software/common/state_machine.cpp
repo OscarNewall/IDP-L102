@@ -82,7 +82,7 @@ void STATE_loop() {
         result = MOVE_line_follow_for_time(3000);
     }
     else if (state == NAV_LINE_FOLLOW_INTO_INDUSTRIAL) {
-        result = MOVE_line_follow_for_time(2000);
+        result = MOVE_line_follow_for_time(3600);
     }
     else if (state == NAV_BLOCK_PICKUP) {
         result = SERV_pick_up_and_detect();
