@@ -75,6 +75,7 @@ static NAV_turns_e route_res1_to_green_to_res2[] = {
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
+    NAV_JUNC_CONFIRM,
     NAV_LINE_FOLLOW,
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
@@ -133,11 +134,14 @@ static NAV_turns_e route_res2_to_green_to_ind1[] = {
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
+    NAV_JUNC_CONFIRM,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_LEFT,
     NAV_LINE_FOLLOW_INTO_INDUSTRIAL,
     NAV_JUNC_CONFIRM,
+    NAV_JUNC_CONFIRM,
     NAV_TURN_90_LEFT,
+    NAV_BLOCK_DROPOFF,
     NAV_LINE_FOLLOW_TO_BLOCK,
     NAV_BLOCK_PICKUP
 
@@ -168,12 +172,15 @@ static NAV_turns_e route_res2_to_red_to_ind1[] = {
     NAV_JUNC_FORWARD_RIGHT,
     NAV_LINE_FOLLOW_INTO_INDUSTRIAL,
     NAV_JUNC_CONFIRM,
+    NAV_JUNC_CONFIRM,
     NAV_TURN_90_LEFT,
+    NAV_BLOCK_DROPOFF,
     NAV_LINE_FOLLOW_TO_BLOCK,
     NAV_BLOCK_PICKUP
 };
 
 static NAV_turns_e route_ind1_to_green_to_finish[] = {
+    NAV_INDICATE_FOAM,
     NAV_BLIND_REVERSE,
     NAV_JUNC_REVERSE_LEFT,
     NAV_JUNC_CONFIRM,
@@ -185,9 +192,9 @@ static NAV_turns_e route_ind1_to_green_to_finish[] = {
     NAV_JUNC_PASS,
     NAV_LINE_FOLLOW_FOR_TIME,
     NAV_BLOCK_DROPOFF,
-    NAV_INIT_180_RIGHT,
+    NAV_INIT_180_LEFT,
     NAV_STOW_FLIPPER,
-    NAV_COMPLETE_180_RIGHT,
+    NAV_COMPLETE_180_LEFT,
     NAV_JUNC_CONFIRM,
     NAV_LINE_FOLLOW,
     NAV_JUNC_FORWARD_RIGHT,
@@ -204,6 +211,7 @@ static NAV_turns_e route_ind1_to_green_to_finish[] = {
 };
 
 static NAV_turns_e route_ind1_to_red_to_finish[] = {
+    NAV_INDICATE_SOLID,
     NAV_BLIND_REVERSE,
     NAV_JUNC_REVERSE_LEFT,
     NAV_JUNC_CONFIRM,

@@ -133,7 +133,7 @@ STATE_result_e JUNC_confirm_turn_loop() {
 STATE_result_e JUNC_turn_90(bool is_left) {
     LS_data_t ls_out = LS_read();
 
-    if (!UTIL_reached_timeout(1500)) {
+    if (!UTIL_reached_timeout(800)) {
         if (is_left) {
             MOT_setspeeds(-FORWARD_SPEED, FORWARD_SPEED);
         }

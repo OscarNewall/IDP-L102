@@ -45,7 +45,7 @@ STATE_result_e MOVE_blind_forward_loop(bool is_forward) {
     }
 
     if (is_forward) {
-        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+        MOT_setspeeds(FORWARD_SPEED*0.9, FORWARD_SPEED);
     }
     else {
         MOT_setspeeds(-FORWARD_SPEED, -FORWARD_SPEED);
