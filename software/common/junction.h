@@ -20,4 +20,6 @@ STATE_result_e JUNC_complete_180_loop(bool is_left);
 
 STATE_result_e JUNC_confirm_turn_loop();
 
+STATE_result_e JUNC_turn_90(bool is_left);
+
 #endif

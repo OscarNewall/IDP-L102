@@ -129,3 +129,37 @@ STATE_result_e JUNC_confirm_turn_loop() {
         return STATE_REPEAT;
     }
 }
+
+STATE_result_e JUNC_turn_90(bool is_left) {
+    LS_data_t ls_out = LS_read();
+
+    if (!UTIL_reached_timeout(800)) {
+        if (is_left) {
+            MOT_setspeeds(-FORWARD_SPEED, FORWARD_SPEED);
+        }
+        else {
+            MOT_setspeeds(FORWARD_SPEED, -FORWARD_SPEED);  
+        }
+        return STATE_REPEAT;
+    }
+
+    if (UTIL_reached_timeout(1500 + 500)) {
+        // Go forward a bit after the blind turn
+        MOT_setspeeds(FORWARD_SPEED, FORWARD_SPEED);
+    }
+
+    if (ls_out.far_left && ls_out.far_right) {
+        MOT_setspeeds(0, 0);
+        return STATE_EXIT;
+    }
+    else if (!ls_out.far_left && ls_out.far_right) {
+        MOT_setspeeds(-FORWARD_SPEED, 0);
+    }
+    else if (ls_out.far_left && !ls_out.far_right) {
+        MOT_setspeeds(0, -FORWARD_SPEED);
+    }
+    else {
+        MOT_setspeeds(-FORWARD_SPEED, -FORWARD_SPEED);
+    }
+    return STATE_REPEAT;
+}

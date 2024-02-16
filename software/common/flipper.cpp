@@ -6,7 +6,7 @@
 #include "motor.h"
 #include "utils.h"
 
-#define SERVO_CLOSED_ANGLE 116 /*add fully closed angle here*/
+#define SERVO_CLOSED_ANGLE 117 /*add fully closed angle here*/
 #define SERVO_OPEN_ANGLE 60 /*add fully open angle here*/
 #define SERVO_COMPACT_ANGLE 100 /*default angle for stowing the flipper*/
 

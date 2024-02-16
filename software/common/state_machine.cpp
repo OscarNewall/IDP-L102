@@ -58,7 +58,10 @@ void STATE_loop() {
         result = JUNC_turn_loop(false, true);
     }
     else if (state == NAV_BLIND_FORWARDS) {
-        result = MOVE_blind_forward_loop();
+        result = MOVE_blind_forward_loop(true);
+    }
+    else if (state == NAV_BLIND_REVERSE) {
+        result = MOVE_blind_forward_loop(false);
     }
     else if (state == NAV_JUNC_PASS) {
         result = JUNC_pass_loop();
@@ -77,6 +80,9 @@ void STATE_loop() {
     }
     else if (state == NAV_LINE_FOLLOW_FOR_TIME) {
         result = MOVE_line_follow_for_time(3000);
+    }
+    else if (state == NAV_LINE_FOLLOW_INTO_INDUSTRIAL) {
+        result = MOVE_line_follow_for_time(2500);
     }
     else if (state == NAV_BLOCK_PICKUP) {
         result = SERV_pick_up_and_detect();
@@ -104,6 +110,10 @@ void STATE_loop() {
     else if (state == NAV_COMPLETE_180_RIGHT) {
         result = JUNC_complete_180_loop(false);
     }
+    else if (state == NAV_TURN_90_LEFT) {
+        result = JUNC_turn_90(true);
+    }
+
 
     is_new_state = false;
     if (result != STATE_REPEAT) {

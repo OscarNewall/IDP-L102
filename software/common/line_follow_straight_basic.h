@@ -8,13 +8,13 @@
 
 #define FORWARD_SPEED 255
 #define LF_CORRECTION_SPEED 127
-#define PICKUP_DISTANCE 160
+#define PICKUP_DISTANCE 161
 #define sensorPin A0
 
 
 STATE_result_e MOVE_line_follow_loop();
 
-STATE_result_e MOVE_blind_forward_loop();
+STATE_result_e MOVE_blind_forward_loop(bool is_forward);
 
 STATE_result_e MOVE_reverse_line_follow_loop();
 
