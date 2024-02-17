@@ -1,4 +1,4 @@
-#include "flipper.h"
+#include "flipper_and_detection.h"
 #include <Arduino.h>
 #include "state_machine.h"
 #include "motor.h"

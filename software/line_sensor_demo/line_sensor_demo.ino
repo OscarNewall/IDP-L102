@@ -1,6 +1,6 @@
 // Test file for printing line sensor outputs
 
-#include "src/line_sensor.h"
+#include "src/sensors.h"
 #include "src/motor.h"
 
 void setup() {

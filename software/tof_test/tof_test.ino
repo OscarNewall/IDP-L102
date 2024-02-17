@@ -1,7 +1,7 @@
 // File that was used to observe TOF readings
 
-#include "src/line_sensor.h"
-#include "src/flipper.h"
+#include "src/sensors.h"
+#include "src/flipper_and_detection.h"
 #include "src/motor.h"
 #include "src/utils.h"
 

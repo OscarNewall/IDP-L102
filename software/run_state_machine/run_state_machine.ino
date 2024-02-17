@@ -1,11 +1,11 @@
 // The main .ino file, as was used in the second competition
 
-#include "src/line_follow_straight_basic.h"
+#include "src/line_movement.h"
 #include "src/junction.h"
 #include "src/navigation.h"
 #include "src/state_machine.h"
 #include "src/utils.h"
-#include "src/flipper.h"
+#include "src/flipper_and_detection.h"
 
 // Initialise the blue LED's ticker and set the flashing to 2Hz
 Ticker bluetimer(LED_flashblue, 500, 0, MILLIS);

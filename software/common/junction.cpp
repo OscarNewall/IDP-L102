@@ -2,9 +2,9 @@
 
 #include "junction.h"
 #include <stdint.h>
-#include "line_sensor.h"
+#include "sensors.h.h"
 #include "motor.h"
-#include "line_follow_straight_basic.h"
+#include "line_movement.h"
 #include "utils.h"
 
 // Defining some movement related numbers that are likely to need tweaking

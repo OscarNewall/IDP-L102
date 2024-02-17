@@ -1,9 +1,9 @@
 // File primarily for the main state machine function and related functions
 
-#include "flipper.h"
+#include "flipper_and_detection.h"
 #include "navigation.h"
 #include "state_machine.h"
-#include "line_follow_straight_basic.h"
+#include "line_movement.h"
 #include "junction.h"
 #include "utils.h"
 

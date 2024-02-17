@@ -1,6 +1,6 @@
 // File to test the flipper and help set the correct angles for the Servo
 
-#include "src/flipper.h"
+#include "src/flipper_and_detection.h"
 #include "src/state_machine.h"
 
 int startbuttonPin = 3;

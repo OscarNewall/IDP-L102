@@ -1,4 +1,6 @@
-#include "line_sensor.h"
+// File containing functions relating to all inputs other than start button and limit switch
+
+#include "sensors.h"
 #include <Arduino.h>
 #include <Wire.h>
 #include <DFRobot_VL53L0X.h>

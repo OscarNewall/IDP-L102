@@ -1,6 +1,6 @@
 // File conatining functions related to straight line movement
 
-#include "line_follow_straight_basic.h"
+#include "line_movement.h"
 #include "utils.h"
 
 // Will not return STATE_EXIT if a junction is detected within this time after entering the line follow state

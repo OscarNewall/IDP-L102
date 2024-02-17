@@ -1,9 +1,9 @@
-#ifndef line_follow_straight_basic_h
-#define line_follow_straight_basic_h
+#ifndef line_movement_h
+#define line_movement_h
 
 #include <Arduino.h>
 #include "motor.h"
-#include "line_sensor.h"
+#include "sensors.h"
 #include "state_machine.h"
 
 #define FORWARD_SPEED 255

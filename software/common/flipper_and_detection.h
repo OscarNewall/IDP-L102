@@ -1,5 +1,5 @@
-#ifndef flipper_h
-#define flipper_h
+#ifndef flipper_and_detection_h
+#define flipper_and_detection_h
 
 #include "state_machine.h"
 #include <Servo.h>

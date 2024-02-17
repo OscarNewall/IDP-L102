@@ -1,8 +1,8 @@
 // Tests the motors and blue LED
 
 #include "src/motor.h"
-#include "src/line_sensor.h"
-#include "src/line_follow_straight_basic.h"
+#include "src/sensors.h"
+#include "src/line_movement.h"
 #include "src/utils.h"
 #include "Ticker.h"
 

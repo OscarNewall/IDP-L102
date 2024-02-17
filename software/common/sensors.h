@@ -1,6 +1,6 @@
 // Header guard
-#ifndef line_sensor_h
-#define line_sensor_h
+#ifndef sensors_h
+#define sensors_h
 
 #include <Arduino.h>
 
