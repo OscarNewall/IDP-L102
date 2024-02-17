@@ -2,7 +2,7 @@
 
 #include "junction.h"
 #include <stdint.h>
-#include "sensors.h.h"
+#include "sensors.h"
 #include "motor.h"
 #include "line_movement.h"
 #include "utils.h"
