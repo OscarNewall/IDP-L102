@@ -2,7 +2,6 @@
 #define flipper_h
 
 #include "state_machine.h"
-
 #include <Servo.h>
 
 void SERV_initialise();

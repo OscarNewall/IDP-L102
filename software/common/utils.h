@@ -25,7 +25,7 @@ typedef enum {
     LOG_DEBUG,
     LOG_INFO,
     LOG_WARNING
-} UTIL_log_e; // Keep upto date with log_level_strs in utils.cpp
+} UTIL_log_e; // Keep up to date with log_level_strs in utils.cpp
 
 #define LOG_LEVEL LOG_DEBUG
 

@@ -1,5 +1,7 @@
-#include "utils.h"
+// Utility file to store functions related to handling timing, errors, and printing serial output.
+// Function descriptions can be found in utils.h
 
+#include "utils.h"
 #include "motor.h"
 
 static unsigned long start_ms;
@@ -67,7 +69,6 @@ void UTIL_error(const char* format, ...) {
     MOT_setspeeds(0, 0);
 
     while (true) {
-        // TODO: flash LED
         #ifdef USE_SERIAL
         Serial.print(buf);
         #endif

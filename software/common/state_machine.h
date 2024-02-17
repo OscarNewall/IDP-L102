@@ -1,9 +1,11 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
+// Assign pins to green and red LEDs
 #define green_led 6
 #define red_led 5
 
+// Define an enum to cover all the state exit conditions
 typedef enum {
     STATE_REPEAT,
     STATE_EXIT,
@@ -13,12 +15,8 @@ typedef enum {
 } STATE_result_e;
 
 STATE_result_e STATE_sleep_loop();
-
-// True for first loop in new state
 bool STATE_is_new_state();
-
 void STATE_setup();
-
 void STATE_loop();
 
 #endif

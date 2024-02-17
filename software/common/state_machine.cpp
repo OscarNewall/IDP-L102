@@ -1,3 +1,5 @@
+// File primarily for the main state machine function and related functions
+
 #include "flipper.h"
 #include "navigation.h"
 #include "state_machine.h"
@@ -5,19 +7,25 @@
 #include "junction.h"
 #include "utils.h"
 
+// Variable for holding the current state
 static NAV_turns_e state;
 
+// Function for stopping the robot for time_ms
 STATE_result_e STATE_sleep_loop(unsigned long time_ms) {
     MOT_setspeeds(0, 0);
     return UTIL_reached_timeout(time_ms) ? STATE_EXIT : STATE_REPEAT;
 }
 
+// Declaring variable before use
 static bool is_new_state;
 
+// Function returning a boolean, true only on the first loop of a new state
 bool STATE_is_new_state() {
     return is_new_state;
 }
 
+// Should be placed in the setup loop of .ino files
+// Fetches initial state, sets LED pins, and prints the initial state's name
 void STATE_setup() {
     state = NAV_initial_state();
     UTIL_reset_start_time();
@@ -27,8 +35,10 @@ void STATE_setup() {
     pinMode(red_led, OUTPUT);
 }
 
+
+// Should be placed in the main loop of .ino files
+// Runs code based on the current state and exits the state when appropriate, using NAV_next_state to enter a new state
 void STATE_loop() {
-// Function to run repeatedly in main loop
     STATE_result_e result;
 
     if (state == NAV_END) {
@@ -97,11 +107,11 @@ void STATE_loop() {
         result = MOVE_line_follow_to_block_loop();
     }
     else if (state == NAV_INDICATE_SOLID) {
-        digitalWrite(red_led, HIGH); // While in this state make sure red led is on and vehicle is stationary
+        digitalWrite(red_led, HIGH);
         result = STATE_sleep_loop(5500);
     }
     else if (state == NAV_INDICATE_FOAM) {
-        digitalWrite(green_led, HIGH); // While in this state make sure green led is on and vehicle is stationary
+        digitalWrite(green_led, HIGH);
         result = STATE_sleep_loop(5500);
     }
     else if (state == NAV_COMPLETE_180_LEFT) {
@@ -115,13 +125,13 @@ void STATE_loop() {
     }
 
 
-    is_new_state = false;
+    is_new_state = false; // Reached end of first loop so it is no longer a new state
     if (result != STATE_REPEAT) {
-        digitalWrite(red_led, LOW);
+        digitalWrite(red_led, LOW); // Turn off green & red LEDs in case they were activated
         digitalWrite(green_led, LOW);
-        state = NAV_next_state(result);
-        is_new_state = true;
-        UTIL_reset_start_time();
-        UTIL_log(LOG_INFO, "Changing to %s\n", states[state]);
+        state = NAV_next_state(result); // Pass exit condition to NAV_next_state to get new state
+        is_new_state = true; // Reset as next loop is new state
+        UTIL_reset_start_time(); // Reset state timer
+        UTIL_log(LOG_INFO, "Changing to %s\n", states[state]); // Print serial output for easy debugging
     }
 }

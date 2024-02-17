@@ -1,6 +1,5 @@
-//Any libraries to be included go here
-//Any global variables go in here
-// Any function prototypes go here
+// File that was used to observe readings from the ultrasonic sensor
+
 #include "Arduino.h"
 #include "Wire.h"
 
