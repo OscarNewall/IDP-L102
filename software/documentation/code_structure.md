@@ -1,5 +1,7 @@
 # IDP software
 
+[Link](https://github.com/OscarNewall/IDP-L102) to GitHub
+
 ![Block Diagram](block_diagram.drawio.png)
 
 ## Navigation
