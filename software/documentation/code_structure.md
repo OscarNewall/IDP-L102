@@ -9,7 +9,7 @@
 - Had hard-coded arrays of states to move the robot between set parts of the course (e.g. start to first residential block)
 - Switched array when a block was identified depending on whether it needed to be dropped off in the red or green zone
 - Had Boolean variables which tracked which blocks had been picked up
-- Also, had the option to follow a custom array of states which could be defined in a separate file for specific test cases
+- Also had the option to follow a custom array of states which could be defined in a separate file for specific test cases
 
 ## State Machine
 - All contained in **`state_machine.cpp`**
@@ -34,7 +34,7 @@ typedef enum {
 - Also had states to line follow backwards, for a set time, and while the time-of-flight measurement was above a threshold
 ### Junction traversal
 - Defined in **`junction.cpp`**
-- Would nudge forward at junctions, then rotate on the spot until the central two line sensors where triggered
+- Would nudge forward at junctions, then rotate on the spot until the central two line sensors were triggered
 - Had states to do left/right turns, going forwards and backwards
 - Also had states to turn 90&deg; and 180&deg; on a line rather than at a junction
 - Also had a `NAV_JUNC_CONFIRM` state which was used for problematic turns to correct after the turn
