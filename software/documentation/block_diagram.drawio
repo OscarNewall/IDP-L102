@@ -1,50 +1,50 @@
-<mxfile host="app.diagrams.net" modified="2024-02-18T17:30:59.537Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="4bcf7NJQi1WRsXjTkSWk" version="23.1.5" type="device">
+<mxfile host="Electron" modified="2024-02-19T11:16:01.816Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="JPaISmME3QvWFFWfgZ8J" version="23.1.5" type="device">
   <diagram name="Page-1" id="LAr7Cq_9fpJFKIoPwLgG">
-    <mxGraphModel dx="1434" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1050" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-9" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="125" y="420" width="600" height="150" as="geometry" />
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-14" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="125" y="240" width="600" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-2" value="&lt;h1&gt;&lt;br&gt;&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-9">
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-1" value="&lt;h1&gt;&lt;br&gt;&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-14" vertex="1">
           <mxGeometry width="600" height="150" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-4" value="&lt;h3&gt;Motor&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-9">
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-10" value="&lt;h3&gt;Line following&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-14" vertex="1">
           <mxGeometry x="55" y="70" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-5" value="&lt;h3&gt;Sensors&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-9">
-          <mxGeometry x="240" y="70" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-6" value="&lt;h3&gt;Flipper&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-9">
-          <mxGeometry x="425" y="70" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-8" value="&lt;h1&gt;Hardware Control&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-9">
-          <mxGeometry width="600" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-14" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="125" y="240" width="600" height="150" as="geometry" />
-        </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-1" value="&lt;h1&gt;&lt;br&gt;&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-14">
-          <mxGeometry width="600" height="150" as="geometry" />
-        </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-10" value="&lt;h3&gt;Line following&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-14">
-          <mxGeometry x="55" y="70" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-11" value="&lt;h3&gt;Junction traversal&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-14">
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-11" value="&lt;h3&gt;Junction traversal&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-14" vertex="1">
           <mxGeometry x="235" y="70" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-12" value="&lt;h3&gt;Block pickup/dropoff&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-14">
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-12" value="&lt;h3&gt;Block pickup/dropoff&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-14" vertex="1">
           <mxGeometry x="425" y="70" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-13" value="&lt;h1&gt;Operating States&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="5sXEHrz6IQpyJsYVlEab-14">
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-13" value="&lt;h1&gt;Operating States&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-14" vertex="1">
           <mxGeometry width="600" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-15" value="&lt;h1&gt;State Machine&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="125" y="140" width="600" height="70" as="geometry" />
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-9" value="" style="group" parent="5sXEHrz6IQpyJsYVlEab-14" vertex="1" connectable="0">
+          <mxGeometry y="150" width="600" height="150" as="geometry" />
         </mxCell>
-        <mxCell id="5sXEHrz6IQpyJsYVlEab-16" value="&lt;h1&gt;Navigation&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="125" y="50" width="600" height="60" as="geometry" />
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-2" value="&lt;h1&gt;&lt;br&gt;&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="5sXEHrz6IQpyJsYVlEab-9" vertex="1">
+          <mxGeometry width="600" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-4" value="&lt;h3&gt;Motor&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-9" vertex="1">
+          <mxGeometry x="55" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-5" value="&lt;h3&gt;Sensors&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-9" vertex="1">
+          <mxGeometry x="240" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-6" value="&lt;h3&gt;Flipper&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-9" vertex="1">
+          <mxGeometry x="425" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-8" value="&lt;h1&gt;Hardware Control&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5sXEHrz6IQpyJsYVlEab-9" vertex="1">
+          <mxGeometry width="600" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-15" value="&lt;h1&gt;State Machine&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="125" y="170" width="600" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5sXEHrz6IQpyJsYVlEab-16" value="&lt;h1&gt;Navigation&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="125" y="110" width="600" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
